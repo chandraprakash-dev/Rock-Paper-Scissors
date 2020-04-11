@@ -9,7 +9,6 @@
         <button value="paper">Paper</button>
         <button value="scissors">Scissors</button>
         <div id="results">
-
         </div>
 
         <script>
@@ -31,17 +30,33 @@
                 // functionality to check who wins the round
                 const playerSelection = e.target.value;
                 const computerSelection = computerPlay();
+                const results = document.querySelector('#results');
+                const finalResults = document.querySelector('#finalResult');
+                let msg;
+
                 if (playerSelection === computerSelection) {
-                    console.log(`This round is a draw ${playerSelection} cant beat ${computerSelection}`);
+                    msg = `This round is a draw ${playerSelection} cant beat ${computerSelection}. `;
                 } else if (itemDefeats[playerSelection] === computerSelection) {
-                    console.log(`You win this round! ${playerSelection} beats ${computerSelection}`)
+                    msg = `You win this round! ${playerSelection} beats ${computerSelection}. `;
                     playerScore ++;
                 } else if (itemDefeats[computerSelection] === playerSelection) {
-                    console.log(`Computer wins this round! ${computerSelection} beats ${playerSelection}`)
+                    msg = `Computer wins this round! ${computerSelection} beats ${playerSelection}. `;
                     computerScore ++;
                 } 
+                results.textContent = msg;
+
                 console.log(`Player: ${playerSelection}, ${playerScore}`);
                 console.log(`Computer: ${computerSelection}, ${computerScore}`);
+
+                let endMsg = "";
+                if (playerScore == 5) {
+                    endMsg = `You win the game. You beat the computer ${playerScore}:${computerScore}`;
+                    playerScore = computerScore = 0;
+                } else if (computerScore == 5) {
+                    endMsg = `Computer wins the game. Computer beat you ${computerScore}:${playerScore}`;
+                    playerScore = computerScore = 0;
+                }
+                results.textContent += endMsg;
             }
 
             const buttons = document.querySelectorAll('button');
