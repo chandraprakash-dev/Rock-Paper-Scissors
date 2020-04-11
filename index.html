@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Sciccors</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <script>
+            gameItems = ['rock', 'paper', 'scissors'];
+            itemDefeats = {'rock': 'scissors',
+                            'paper': 'rock',
+                            'scissors': 'paper'
+                            }
+            
+            function computerPlay() {
+                // return a random item
+                randomIndex = Math.floor(Math.random() * 3);
+                randomItem = gameItems[randomIndex];
+                return randomItem;
+            }
+
+            function playRound(playerSelection, computerSelection) {
+                // functionality to check who wins the round
+                if (playerSelection === computerSelection) {
+                    return 0;
+                } else if (itemDefeats[playerSelection] === computerSelection) {
+                    return 1;
+                } else if (itemDefeats[computerSelection] === playerSelection) {
+                    return 2;
+                } 
+            }
+
+            function game() {
+                playerScore = computerScore = 0;
+
+                // The game has 5 rounds as of now, you can change 
+                // the value of i to play as many rounds as you want!
+                for(i = 0; i < 5; i ++) {
+                    const playerSelection = prompt("Please input your choice").toLowerCase();
+                    const computerSelection = computerPlay();
+                    
+                    const result = playRound(playerSelection, computerSelection);
+                
+                    if (result == 0) {
+                        console.log(`This round is a draw ${playerSelection} cant beat ${computerSelection}`);
+                    } else if(result == 1) {
+                        console.log(`You win this round! ${playerSelection} beats ${computerSelection}`)
+                        playerScore++;
+                    } else if (result == 2) {
+                        console.log(`Computer wins this round! ${computerSelection} beats ${playerSelection}`)
+                        computerScore++;
+                    }
+                }
+                
+                if(playerScore > computerScore) {
+                    console.log("You won the game! You beat the computer :)");
+                } else if(playerScore < computerScore) {
+                    console.log("You lost to a computer :|");
+                } else {
+                    console.log("The game was a draw...");
+                }
+
+            }
+
+            // Let the game begin.
+            game();
+
+        </script>
+    </body>
+</html>
