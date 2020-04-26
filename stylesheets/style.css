@@ -10,11 +10,13 @@ body {
     height: 100%;
     background-color: aquamarine;
     display: grid;
-    grid-template-rows:200px 50px 1fr 100px ;
+    grid-template-rows:10% 5% 1fr 10% ;
 }
 
 header {
     background-color: coral;
+    /* display: grid; */
+    text-align: center;
 }
 
 h2 {
@@ -25,36 +27,152 @@ h2 {
 main {
     background-color: cornflowerblue;
     display: grid;
-    grid-template: 1fr 3fr / 1fr 1fr 1fr;
+    grid-template: 1fr 5fr / 3fr 2fr 3fr;
     grid-template-areas: "pwin ties cwin"
                          "pcard rresults ccard"               
     ;
+    grid-gap: 1%;
+}
+
+main div {
+    background-color: gold;
 }
 
 #playerWins {
     grid-area: pwin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #ties {
     grid-area: ties;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #computerWins {
     grid-area: cwin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#playerGrid {
+    grid-area: pcard;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    background-color: hotpink;
 }
 
 #playerCard {
-    grid: pcard;
+    background-color: lawngreen;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    margin: 5% 10%;
+    width: 80%;
+}
+
+#playerSelection {
+    background-color: indianred;
+    margin: 2% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttons-area {
+    background-color: indianred;
+    margin: 2% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttons {
+    background-color: indigo;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+#computerGrid {
+    background-color: hotpink;
+    grid-area: ccard;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
 }
 
 #computerCard {
-    grid-area: ccard;
+    background-color: lawngreen;
+    width: 80%;
+    margin: 5% 10%;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+}
+
+#computerSelection {
+    background-color: indianred;
+    margin: 2% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#computerStatus {
+    background-color: indianred;
+    margin: 2% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#roundSummary {
+    background-color: hotpink;
+    grid-area: rresults;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+#resultsCard {
+    background-color: lawngreen;
+    width: 80%;
+    margin: 10% 10%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#selectionResults {
+    background-color: indianred;
+    margin: 2% 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+#selectionResults div {
+    background-color: lightblue;
 }
 
 #roundResults {
-    grid-area: rresults;
+    background-color: indianred;
+    margin: 2% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 footer {
     background-color: crimson;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

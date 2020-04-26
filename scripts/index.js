@@ -16,8 +16,8 @@ function playRound(e) {
     // functionality to check who wins the round
     const playerSelection = e.target.value;
     const computerSelection = computerPlay();
-    const results = document.querySelector('#results');
-    const finalResults = document.querySelector('#finalResult');
+    // const results = document.querySelector('#results');
+    // const finalResults = document.querySelector('#finalResult');
     let msg;
 
     if (playerSelection === computerSelection) {
@@ -29,7 +29,7 @@ function playRound(e) {
         msg = `Computer wins this round! ${computerSelection} beats ${playerSelection}. `;
         computerScore ++;
     } 
-    results.textContent = msg;
+    // results.textContent = msg;
 
     console.log(`Player: ${playerSelection}, ${playerScore}`);
     console.log(`Computer: ${computerSelection}, ${computerScore}`);
@@ -42,7 +42,7 @@ function playRound(e) {
         endMsg = `Computer wins the game. Computer beat you ${computerScore}:${playerScore}`;
         playerScore = computerScore = 0;
     }
-    results.textContent += endMsg;
+    // results.textContent += endMsg;
 }
 
 const buttons = document.querySelectorAll('button');
