@@ -2,22 +2,59 @@
     box-sizing: border-box;
 }
 
-body {
+html {
     height: 100vh;
-    /* background: linear-gradient(-30deg, red, blue) no-repeat center; */
+}
+
+body {
+    height: 100%;
+    background-color: aquamarine;
+    display: grid;
+    grid-template-rows:200px 50px 1fr 100px ;
+}
+
+header {
+    background-color: coral;
+}
+
+h2 {
+    background-color: beige;
+    text-align: center;
 }
 
 main {
-    position: absolute;
-    margin: auto;
-    top : 0;
-    bottom : 0;
-    left : 0;
-    right : 0;
-    height: 200px;
-    width: 200px;
+    background-color: cornflowerblue;
+    display: grid;
+    grid-template: 1fr 3fr / 1fr 1fr 1fr;
+    grid-template-areas: "pwin ties cwin"
+                         "pcard rresults ccard"               
+    ;
 }
 
-button {
-    width: 2em;
+#playerWins {
+    grid-area: pwin;
+}
+
+#ties {
+    grid-area: ties;
+}
+
+#computerWins {
+    grid-area: cwin;
+}
+
+#playerCard {
+    grid: pcard;
+}
+
+#computerCard {
+    grid-area: ccard;
+}
+
+#roundResults {
+    grid-area: rresults;
+}
+
+footer {
+    background-color: crimson;
 }

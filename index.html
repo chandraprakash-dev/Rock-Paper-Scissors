@@ -7,12 +7,46 @@
         <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     </head>
     <body>
+        <header>
+            <h1>Rock Paper Scissors</h1>
+        </header>
+
+        <h2>Round 1</h2>
         <main>
-            <button value="rock">Rock</button>
-            <button value="paper">Paper</button>
-            <button value="scissors">Scissors</button>
-            <div id="results"></div>
+            <div id="playerWins">
+                Win
+            </div>
+            <div id="ties">
+                Ties
+            </div>
+            <div id="computerWins">
+                Win
+            </div>
+            <div id="playerCard">
+                <div id="selection-area">
+                    <div id="rock">
+                        <button value="rock">Rock</button>
+                    </div>
+                    <div id="paper">
+                        <button value="paper">Paper</button>
+                    </div>
+                    <div id="scissors">
+                        <button value="scissors">Scissors</button>
+                    </div>
+                </div>
+            </div>
+            <div id="roundResults">
+                You win
+            </div>
+            <div id="computerCard">
+
+            </div>
         </main>
+        <footer>
+            <p>You win 2: 3</p>
+        </footer>
+        <!-- <div id="results"></div> -->
+
 
         <script src="scripts/index.js"></script>
     </body>
