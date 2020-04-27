@@ -45,5 +45,5 @@ function playRound(e) {
     // results.textContent += endMsg;
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('#playerCard button');
 buttons.forEach(button => button.addEventListener('click', playRound) );

@@ -8,9 +8,11 @@ html {
 
 body {
     height: 100%;
+    width: 80%;
+    margin: 0 auto;
     background-color: aquamarine;
     display: grid;
-    grid-template-rows:10% 5% 1fr 10% ;
+    grid-template-rows:15% 5% 1fr 15% ;
 }
 
 header {
@@ -27,7 +29,7 @@ h2 {
 main {
     background-color: cornflowerblue;
     display: grid;
-    grid-template: 1fr 5fr / 3fr 2fr 3fr;
+    grid-template: 1fr 8fr / 3fr 2fr 3fr;
     grid-template-areas: "pwin ties cwin"
                          "pcard rresults ccard"               
     ;
@@ -38,47 +40,53 @@ main div {
     background-color: gold;
 }
 
-#playerWins {
-    grid-area: pwin;
+#playerWins, #computerWins, #ties {    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#playerWins {
+    grid-area: pwin;
 }
 
 #ties {
     grid-area: ties;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 #computerWins {
     grid-area: cwin;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-#playerGrid {
-    grid-area: pcard;
+#playerGrid, #computerGrid, #roundSummary {
     display: flex;
     align-items: stretch;
     justify-content: center;
     background-color: hotpink;
 }
 
-#playerCard {
-    background-color: lawngreen;
-    display: grid;
-    grid-template-rows: 4fr 1fr;
-    margin: 5% 10%;
-    width: 80%;
+#playerGrid {
+    grid-area: pcard;
 }
 
-#playerSelection {
+#computerGrid {
+    grid-area: ccard;
+}
+
+#roundSummary {
+    grid-area: rresults;   
+}
+
+#playerCard, #computerCard {
+    background-color: lawngreen;
+    width: 80%;
+    margin: 5% 10%;
+    display: grid;
+    grid-template-rows: 3fr 2fr;
+}
+
+#playerSelection, #computerSelection {
     background-color: indianred;
     margin: 2% 5%;
     display: flex;
@@ -95,50 +103,12 @@ main div {
 }
 
 #buttons {
+    width: 100%;
+    height: 100%;
     background-color: indigo;
     display: flex;
     align-items: center;
-    justify-content: center;  
-}
-
-#computerGrid {
-    background-color: hotpink;
-    grid-area: ccard;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-}
-
-#computerCard {
-    background-color: lawngreen;
-    width: 80%;
-    margin: 5% 10%;
-    display: grid;
-    grid-template-rows: 4fr 1fr;
-}
-
-#computerSelection {
-    background-color: indianred;
-    margin: 2% 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#computerStatus {
-    background-color: indianred;
-    margin: 2% 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#roundSummary {
-    background-color: hotpink;
-    grid-area: rresults;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
+    justify-content: space-evenly;  
 }
 
 #resultsCard {
@@ -168,6 +138,26 @@ main div {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+button {
+    margin:5px;
+    padding: 5px;
+    width: 60px;
+    height: 55px;  
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+button[name="rock"] {
+    background-image: url('../assets/images/buttons/rock.png');
+}
+
+button[name="paper"] {
+    background-image: url('../assets/images/buttons/paper.png');  
+}
+
+button[name="scissors"] {
+    background-image: url('../assets/images/buttons/scissors.png');
 }
 
 footer {
