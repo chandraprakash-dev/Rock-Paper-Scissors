@@ -4,6 +4,13 @@ itemDefeats = {'rock': 'scissors',
                 'scissors': 'paper'
                 }
 playerScore = computerScore = tieScore = 0;
+roundNo = 1;
+
+function newGame() {
+    resetSelections();
+    resetResults();
+    resetFinalResults();
+}
 
 function computerPlay() {
     // return a random item
@@ -13,21 +20,24 @@ function computerPlay() {
 }
 
 function updateSelections(playerSelection, computerSelection) {
+    const roundNoField = document.querySelector('h2 span');
+    roundNoField.textContent = roundNo ++;
+
     const playerSelectionField = document.querySelector('#playerSelection');
-    playerSelectionField.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat`;
-    playerSelectionField.style['background-size'] = "cover";
+    playerSelectionField.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat center`;
+    playerSelectionField.style['background-size'] = "contain";
 
     const computerSelectionField = document.querySelector('#computerSelection');
-    computerSelectionField.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat`;
-    computerSelectionField.style['background-size'] = "cover";
+    computerSelectionField.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat center`;
+    computerSelectionField.style['background-size'] = "contain";
 
     const playerSelectionResult = document.querySelector('#playerResults');
-    playerSelectionResult.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat`;
-    playerSelectionResult.style['background-size'] = "cover";
+    playerSelectionResult.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat center`;
+    playerSelectionResult.style['background-size'] = "contain";
     
     const computerSelectionResult = document.querySelector('#computerResults');
-    computerSelectionResult.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat`;
-    computerSelectionResult.style['background-size'] = "cover";
+    computerSelectionResult.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat center`;
+    computerSelectionResult.style['background-size'] = "contain";
 }
 
 function computeResults(playerSelection, computerSelection) {
@@ -62,6 +72,16 @@ function updateResults(playerSelection, computerSelection, winner) {
     roundResultsField.textContent = result;
 }
 
+function updateFinalResults(winner) {
+    const finalResults = document.querySelector('#finalResults');
+
+    const finalResultsMessage = finalResults.querySelector('p');
+    finalResultsMessage.textContent = `${winner} wins the game!`;
+
+    const finalResultsScore = finalResults.querySelector('span');
+    finalResultsScore.textContent = `${playerScore} : ${computerScore}`;
+}
+
 function resetSelections() {
     const playerSelectionField = document.querySelector('#playerSelection');
     playerSelectionField.style['background'] = `url('assets/images/selections/rpslogo.png')  no-repeat`;
@@ -72,19 +92,61 @@ function resetSelections() {
     computerSelectionField.style['background-size'] = "cover";
 
     const playerSelectionResult = document.querySelector('#playerResults');
-    playerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat`;
-    playerSelectionResult.style['background-size'] = "cover";
+    playerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat center`;
+    playerSelectionResult.style['background-size'] = "contain";
     
     const computerSelectionResult = document.querySelector('#computerResults');
-    computerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat`;
-    computerSelectionResult.style['background-size'] = "cover";
+    computerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat center`;
+    computerSelectionResult.style['background-size'] = "contain";
 }
 
-function resetResults(winner) {
-    
+function resetResults() {
+    playerScore = computerScore = tieScore = 0;
+    roundNo = 1;
+
+    const roundNoField = document.querySelector('h2 span');
+    roundNoField.textContent = roundNo;
+
+    const playerWinsField = document.querySelector('#playerWins');
+    const playerWinsFieldScore = playerWinsField.querySelector('#score')
+    playerWinsFieldScore.textContent = playerScore;
+
+    const computerWinsField = document.querySelector('#computerWins');
+    const computerWinsFieldScore = computerWinsField.querySelector('#score')
+    computerWinsFieldScore.textContent = computerScore;
+
+    const tieWinsField = document.querySelector('#tieWins');
+    const tieWinsFieldScore = tieWinsField.querySelector('#score')
+    tieWinsFieldScore.textContent = tieScore;
+
+    const roundResultsField = document.querySelector('#roundResults span');
+    roundResultsField.textContent = 'Let\'s begin';    
 }
+
+function resetFinalResults() {
+    const finalResults = document.querySelector('#finalResults');
+
+    const finalResultsMessage = finalResults.querySelector('p');
+    finalResultsMessage.textContent = 'Whoever scores 5 points first wins the game!';
+
+    const finalResultsScore = finalResults.querySelector('span');
+    finalResultsScore.textContent = '';
+}
+
+// function wantsToPlayAgain() {
+//     answer = prompt("Do you want to play again?");
+
+//     if(answer != "no") {
+//         newGame();
+//     } else {
+//         window.open("./gameOver.html", "_self");
+//     }
+// }
 
 function playRound(e) {
+    if (playerScore === 5 || computerScore === 5) {
+        newGame();
+    }
     // functionality to check who wins the round
     const playerSelection = e.target.value;
     const computerSelection = computerPlay();
@@ -94,14 +156,10 @@ function playRound(e) {
     updateResults(playerSelection, computerSelection, winner); 
 
     // Reset the scores once one of the players wins 5 points
-    if (playerScore == 5) {
-        winner = 'player';
-        resetSelections();
-        resetResults(winner);
-    } else if (computerScore == 5) {
-        winner= 'computer';
-        resetSelections();
-        resetResults(winner);
+    if (playerScore === 5 || computerScore === 5) {
+        winner = playerScore === 5 ? 'player' : 'computer';
+        updateFinalResults(winner);
+        // wantsToPlayAgain();
     }
 }
 

@@ -14,24 +14,24 @@ body {
     height: 100%;
     width: 80%;
     margin: 0 auto;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     display: grid;
     grid-template-rows:15% 5% 1fr 15% ;
 }
 
 header {
-    background-color: coral;
+    /* background-color: coral; */
     /* display: grid; */
     text-align: center;
 }
 
 h2 {
-    background-color: beige;
+    /* background-color: beige; */
     text-align: center;
 }
 
 main {
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
     display: grid;
     grid-template: 1fr 8fr / 3fr 2fr 3fr;
     grid-template-areas: "pwin ties cwin"
@@ -41,7 +41,7 @@ main {
 }
 
 main div {
-    background-color: gold;
+    /* background-color: gold; */
 }
 
 #playerWins, #computerWins, #tieWins {    
@@ -67,7 +67,7 @@ main div {
     display: flex;
     align-items: stretch;
     justify-content: center;
-    background-color: hotpink;
+    /* background-color: hotpink; */
 }
 
 #playerGrid {
@@ -83,7 +83,7 @@ main div {
 }
 
 #playerCard, #computerCard {
-    background-color: lawngreen;
+    /* background-color: lawngreen; */
     width: 80%;
     margin: 5% 10%;
     display: grid;
@@ -100,7 +100,7 @@ main div {
 }
 
 #buttons-area {
-    background-color: indianred;
+    /* background-color: indianred; */
     margin: 2% 5%;
     display: flex;
     align-items: center;
@@ -110,14 +110,14 @@ main div {
 #buttons {
     width: 100%;
     height: 100%;
-    background-color: indigo;
+    /* background-color: indigo; */
     display: flex;
     align-items: center;
     justify-content: space-evenly;  
 }
 
 #resultsCard {
-    background-color: lawngreen;
+    /* background-color: lawngreen; */
     width: 80%;
     margin: 10% 10%;
     display: grid;
@@ -136,17 +136,18 @@ main div {
     height: 100%;
     width: 100%;
     /* background-color: indigo; */
-    background: url('../assets/images/selections/rpslogosmall.png') ;
-    background-size: cover; 
+    background: url('../assets/images/selections/rpslogosmall.png') no-repeat center;
+    background-size: contain; 
 }
 
 #roundResults {
-    background-color: indianred;
+    /* background-color: indianred; */
     margin: 2% 5%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 button {
     margin:5px;
     padding: 5px;
@@ -154,6 +155,11 @@ button {
     height: 55px;  
     background-size: cover;
     background-repeat: no-repeat;
+    border: none;
+}
+
+button:focus {
+    text-decoration: none;
 }
 
 button[name="rock"] {
@@ -169,7 +175,7 @@ button[name="scissors"] {
 }
 
 footer {
-    background-color: crimson;
+    /* background-color: crimson; */
     display: flex;
     justify-content: center;
     align-items: center;
