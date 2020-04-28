@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rock Paper Sciccors</title>
+        <title>Rock, Paper, Sciccors | SeaWee games</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
         <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+        <link rel="icon" href="assets/images/icons/rock-paper-scissors-icon.png" type="image/icon type">
     </head>
     <body>
         <header>
@@ -17,21 +18,19 @@
         <main>
             <div id="playerWins">
                 <span>Wins</span>
-                <span>score</span>
+                <span id="score">0</span>
             </div>
-            <div id="ties">
+            <div id="tieWins">
                 <span>Ties</span>
-                <span>score</span>
+                <span id="score">0</span>
             </div>
             <div id="computerWins">
                 <span>Wins</span>
-                <span>score</span>
+                <span id="score">0</span>
             </div>
             <div id="playerGrid">
                 <div id="playerCard">
-                    <div id="playerSelection">
-                        selection
-                    </div>
+                    <div id="playerSelection"></div>
                     <div id="buttons-area">
                         <div id="buttons">
                             <div id="rock">
@@ -50,23 +49,17 @@
             <div id="roundSummary">
                 <div id="resultsCard">
                     <div id="selectionResults">
-                        <div>
-                            rock
-                        </div>
-                        <div>
-                            paper
-                        </div>
+                        <div id="playerResults"></div>
+                        <div id="computerResults"></div>
                     </div>
                     <div id="roundResults">
-                        You win
+                        <span>Let's begin</span>
                     </div>
                 </div>
             </div>
             <div id="computerGrid">
                 <div id="computerCard">
-                    <div id="computerSelection">
-                        selection
-                    </div>
+                    <div id="computerSelection"></div>
                     <div id="buttons-area">
                         <div id="buttons">
                             <div id="rock">

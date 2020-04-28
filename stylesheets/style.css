@@ -6,6 +6,10 @@ html {
     height: 100vh;
 }
 
+link[rel="icon"] {
+    border-radius: 50%;
+}
+
 body {
     height: 100%;
     width: 80%;
@@ -40,7 +44,7 @@ main div {
     background-color: gold;
 }
 
-#playerWins, #computerWins, #ties {    
+#playerWins, #computerWins, #tieWins {    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,7 +55,7 @@ main div {
     grid-area: pwin;
 }
 
-#ties {
+#tieWins {
     grid-area: ties;
 }
 
@@ -87,7 +91,8 @@ main div {
 }
 
 #playerSelection, #computerSelection {
-    background-color: indianred;
+    background: url('../assets/images/selections/rpslogo.png') no-repeat;
+    background-size: cover;    
     margin: 2% 5%;
     display: flex;
     align-items: center;
@@ -120,7 +125,6 @@ main div {
 }
 
 #selectionResults {
-    background-color: indianred;
     margin: 2% 5%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -128,8 +132,12 @@ main div {
     justify-items: center;
 }
 
-#selectionResults div {
-    background-color: lightblue;
+#playerResults, #computerResults {
+    height: 100%;
+    width: 100%;
+    /* background-color: indigo; */
+    background: url('../assets/images/selections/rpslogosmall.png') ;
+    background-size: cover; 
 }
 
 #roundResults {

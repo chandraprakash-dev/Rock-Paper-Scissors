@@ -3,7 +3,7 @@ itemDefeats = {'rock': 'scissors',
                 'paper': 'rock',
                 'scissors': 'paper'
                 }
-playerScore = computerScore = 0;
+playerScore = computerScore = tieScore = 0;
 
 function computerPlay() {
     // return a random item
@@ -12,37 +12,97 @@ function computerPlay() {
     return randomItem;
 }
 
-function playRound(e) {
-    // functionality to check who wins the round
-    const playerSelection = e.target.value;
-    const computerSelection = computerPlay();
-    // const results = document.querySelector('#results');
-    // const finalResults = document.querySelector('#finalResult');
-    let msg;
+function updateSelections(playerSelection, computerSelection) {
+    const playerSelectionField = document.querySelector('#playerSelection');
+    playerSelectionField.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat`;
+    playerSelectionField.style['background-size'] = "cover";
 
+    const computerSelectionField = document.querySelector('#computerSelection');
+    computerSelectionField.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat`;
+    computerSelectionField.style['background-size'] = "cover";
+
+    const playerSelectionResult = document.querySelector('#playerResults');
+    playerSelectionResult.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat`;
+    playerSelectionResult.style['background-size'] = "cover";
+    
+    const computerSelectionResult = document.querySelector('#computerResults');
+    computerSelectionResult.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat`;
+    computerSelectionResult.style['background-size'] = "cover";
+}
+
+function computeResults(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         msg = `This round is a draw ${playerSelection} cant beat ${computerSelection}. `;
+        winner = "tie";
+        tieScore ++;
     } else if (itemDefeats[playerSelection] === computerSelection) {
         msg = `You win this round! ${playerSelection} beats ${computerSelection}. `;
+        winner = "player";
         playerScore ++;
     } else if (itemDefeats[computerSelection] === playerSelection) {
         msg = `Computer wins this round! ${computerSelection} beats ${playerSelection}. `;
+        winner = "computer"
         computerScore ++;
-    } 
-    // results.textContent = msg;
+    }
 
     console.log(`Player: ${playerSelection}, ${playerScore}`);
     console.log(`Computer: ${computerSelection}, ${computerScore}`);
 
-    let endMsg = "";
+    return winner;
+}
+
+function updateResults(playerSelection, computerSelection, winner) {
+    const winnerField = document.querySelector(`#${winner}Wins`);
+    const winnerFieldScore = winnerField.querySelector('#score')
+    winnerFieldScore.textContent = eval(`${winner}Score`);
+
+
+    const roundResultsField = document.querySelector('#roundResults span');
+    let result = winner === "tie" ? 'It\'s a tie' : `${winner} wins!`; 
+    roundResultsField.textContent = result;
+}
+
+function resetSelections() {
+    const playerSelectionField = document.querySelector('#playerSelection');
+    playerSelectionField.style['background'] = `url('assets/images/selections/rpslogo.png')  no-repeat`;
+    playerSelectionField.style['background-size'] = "cover";
+
+    const computerSelectionField = document.querySelector('#computerSelection');
+    computerSelectionField.style['background'] = `url('assets/images/selections/rpslogo.png')  no-repeat`;
+    computerSelectionField.style['background-size'] = "cover";
+
+    const playerSelectionResult = document.querySelector('#playerResults');
+    playerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat`;
+    playerSelectionResult.style['background-size'] = "cover";
+    
+    const computerSelectionResult = document.querySelector('#computerResults');
+    computerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat`;
+    computerSelectionResult.style['background-size'] = "cover";
+}
+
+function resetResults(winner) {
+    
+}
+
+function playRound(e) {
+    // functionality to check who wins the round
+    const playerSelection = e.target.value;
+    const computerSelection = computerPlay();
+
+    updateSelections(playerSelection, computerSelection);
+    let winner = computeResults(playerSelection, computerSelection);
+    updateResults(playerSelection, computerSelection, winner); 
+
+    // Reset the scores once one of the players wins 5 points
     if (playerScore == 5) {
-        endMsg = `You win the game. You beat the computer ${playerScore}:${computerScore}`;
-        playerScore = computerScore = 0;
+        winner = 'player';
+        resetSelections();
+        resetResults(winner);
     } else if (computerScore == 5) {
-        endMsg = `Computer wins the game. Computer beat you ${computerScore}:${playerScore}`;
-        playerScore = computerScore = 0;
+        winner= 'computer';
+        resetSelections();
+        resetResults(winner);
     }
-    // results.textContent += endMsg;
 }
 
 const buttons = document.querySelectorAll('#playerCard button');
