@@ -9,12 +9,23 @@
     </head>
     <body>
         <header>
-            <h1>Rock Paper Scissors</h1>
+            <!-- <h1>Rock Paper Scissors</h1> -->
+            <div>
+                <img src="assets/images/header/rock.png" alt="rock.png"/>
+                <span>Rock</span>
+            </div>
+            <div>
+                <img src="assets/images/header/paper.png" alt="paper.png"/>
+                <span>Paper</span>
+            </div>
+            <div>
+                <img src="assets/images/header/scissors.png" alt="scissors.png"/>
+                <span>Scissors</span>
+            </div>
+            <h2>
+                <p>Round <span>1</span></p>
+            </h2>
         </header>
-
-        <h2>
-            <p>Round <span>1</span></p>
-        </h2>
         <main>
             <div id="playerWins">
                 <span>Wins</span>
@@ -34,13 +45,13 @@
                     <div id="buttons-area">
                         <div id="buttons">
                             <div id="rock">
-                                <button name="rock" value="rock"></button>
+                                <button class="player-buttons" name="rock" value="rock"></button>
                             </div>
                             <div id="paper">
-                                <button name="paper" value="paper"></button>
+                                <button class="player-buttons" name="paper" value="paper"></button>
                             </div>
                             <div id="scissors">
-                                <button name="scissors" value="scissors"></button>
+                                <button class="player-buttons" name="scissors" value="scissors"></button>
                             </div>
                         </div>
                     </div>
@@ -53,7 +64,7 @@
                         <div id="computerResults"></div>
                     </div>
                     <div id="roundResults">
-                        <span>Let's begin</span>
+                        <span>Let's begin!</span>
                     </div>
                 </div>
             </div>
