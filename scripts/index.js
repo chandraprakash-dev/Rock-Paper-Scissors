@@ -62,11 +62,19 @@ function computeResults(playerSelection, computerSelection) {
 }
 
 function updateResults(playerSelection, computerSelection, winner) {
+    let winnerScore;
+    if (winner == "computer") {
+        winnerScore = computerScore;
+    } else if (winner == "player") {
+        winnerScore = playerScore;
+    } else {
+        winnerScore = tieScore;
+    }
     const winnerField = document.querySelector(`#${winner}Wins`);
     const winnerFieldScore = winnerField.querySelector('#score')
-    winnerFieldScore.textContent = eval(`${winner}Score`);
 
-
+    winnerFieldScore.textContent = winnerScore;
+    
     const roundResultsField = document.querySelector('#roundResults span');
     let result = winner === "tie" ? 'It\'s a tie' : `${winner} wins!`; 
     roundResultsField.textContent = result;
