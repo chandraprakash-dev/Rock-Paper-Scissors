@@ -1,195 +1,40 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
+/* Style top level components */
 body {
-    height: 100%;
-    width: 80%;
-    margin: 0 auto;
-    background-color: rgb(250, 250, 250, 0.5);
-    display: grid;
-    grid-template-rows:15% 5% 1fr 15% ;
+    font-family: "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 header {
-    width: 80%;
-    justify-self: center;
-    background-color: rgba(255, 183, 237, 0.1);
-    display: grid;
-    grid-template-columns: 100px 100px 100px;
-    grid-gap: 10px;
-    justify-content: center;
-}
-header div {
-    /* background-color: indianred; */
-    display: grid;
-    grid-template-rows: 4fr 1fr;
-    justify-items: center;
-}
-
-div img {
-    width: 80%;
-    height: 80%;
-}
-
-div span {
-    font-family: Arial, Helvetica, sans-serif;
-    color: rgba(231, 90, 133, 0.945);
-}
-
-#score {
-    font-weight: 600;
-    font-size: 1.8em;
-    color: rgba(253, 228, 4, 0.993);
-}
-h2 {
-    /* background-color: beige; */
-    color: rgb(0, 238, 255);
+    background-color: gold;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.5em;
-    padding: 5px;
+    flex: 100px;
 }
 
 main {
-    /* background-color: cornflowerblue; */
-    display: grid;
-    grid-template: 1fr 8fr / 3fr 2fr 3fr;
-    grid-template-areas: "pwin ties cwin"
-                         "pcard rresults ccard"               
-    ;
-    grid-gap: 1%;
-    /* border: 1px solid hotpink; */
-    font-family: monospace;
-    font-weight: 500;
+    background-color: blue;
+    flex: 2;
 }
 
-main div {
-    /* background-color: gold; */
+footer {
+    background-color: red;
+    flex: 100px;
 }
 
-#playerWins, #computerWins, #tieWins {    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 10px 2px rgba(218, 132, 175, 0.473);
-}
+/* style
 
-#playerWins {
-    grid-area: pwin;
-}
 
-#tieWins {
-    grid-area: ties;
-}
 
-#computerWins {
-    grid-area: cwin;
-}
 
-#playerGrid, #computerGrid, #roundSummary {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    /* background-color: hotpink; */
-    box-shadow:0 0 10px 0.5px rgb(0, 238, 255);
-}
 
-#playerGrid {
-    grid-area: pcard;
-}
 
-#computerGrid {
-    grid-area: ccard;
-}
-
-#roundSummary {
-    grid-area: rresults; 
-}
-
-#playerCard, #computerCard {
-    /* background-color: lawngreen; */
-    width: 80%;
-    margin: 5% 10%;
-    display: grid;
-    grid-template-rows: 3fr 2fr;
-}
-
-#playerSelection, #computerSelection {
-    background: url('../assets/images/selections/rpslogo.png') no-repeat;
-    background-size: cover;    
-    margin: 2% 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#buttons-area {
-    /* background-color: indianred; */
-    margin: 2% 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#buttons {
-    width: 100%;
-    height: 100%;
-    /* background-color: indigo; */
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;  
-}
-
-#resultsCard {
-    /* background-color: lawngreen; */
-    width: 80%;
-    margin: 10% 10%;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-}
-
-#selectionResults {
-    margin: 2% 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-}
-
-#playerResults, #computerResults {
-    height: 100%;
-    width: 100%;
-    /* background-color: indigo; */
-    background: url('../assets/images/selections/rpslogosmall.png') no-repeat center;
-    background-size: contain; 
-}
-
-#roundResults {
-    /* background-color: indianred; */
-    margin: 2% 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#roundResults span {
-    font-weight: bold;
-    font-size: 1.5em;
-    color: rgb(0, 238, 255);
-}
-
+/* style buttons */
 button {
     margin:5px;
     padding: 5px;
     width: 60px;
-    height: 55px;  
+    height: 55px;
     background-size: cover;
     background-repeat: no-repeat;
     border: none;
@@ -200,34 +45,3 @@ button:focus {
     outline: none;
 }
 
-.player-buttons:hover {
-    cursor: pointer;
-    transform: scale(1.3);
-}
-
-button[name="rock"] {
-    background-image: url('../assets/images/buttons/rock.png');
-}
-
-button[name="paper"] {
-    background-image: url('../assets/images/buttons/paper.png');  
-}
-
-button[name="scissors"] {
-    background-image: url('../assets/images/buttons/scissors.png');
-}
-
-footer {
-    background-color: rgba(255, 217, 0, 0.103);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow:0 5px 10px 0.1px gold;
-    text-align: center;
-}
-
-footer p, footer span{
-    font-size: 1.4em;
-    /* color: gold; */
-    color: rgba(231, 90, 133, 0.945);
-}

@@ -1,98 +1,88 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Rock, Paper, Sciccors | SeaWee games</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
-        <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-        <link rel="icon" href="assets/images/icons/rock-paper-scissors-icon.png" type="image/icon type">
-    </head>
-    <body>
-        <header>
-            <!-- <h1>Rock Paper Scissors</h1> -->
-            <div>
-                <img src="assets/images/header/rock.png" alt="rock.png"/>
-                <span>Rock</span>
-            </div>
-            <div>
-                <img src="assets/images/header/paper.png" alt="paper.png"/>
-                <span>Paper</span>
-            </div>
-            <div>
-                <img src="assets/images/header/scissors.png" alt="scissors.png"/>
-                <span>Scissors</span>
-            </div>
-        </header>
-        <h2>
-            <p>Round <span>1</span></p>
-        </h2>
-        <main>
-            <div id="playerWins">
-                <span>Wins</span>
-                <span id="score">0</span>
-            </div>
-            <div id="tieWins">
-                <span>Ties</span>
-                <span id="score">0</span>
-            </div>
-            <div id="computerWins">
-                <span>Wins</span>
-                <span id="score">0</span>
-            </div>
-            <div id="playerGrid">
-                <div id="playerCard">
-                    <div id="playerSelection"></div>
-                    <div id="buttons-area">
-                        <div id="buttons">
-                            <div id="rock">
-                                <button class="player-buttons" name="rock" value="rock"></button>
-                            </div>
-                            <div id="paper">
-                                <button class="player-buttons" name="paper" value="paper"></button>
-                            </div>
-                            <div id="scissors">
-                                <button class="player-buttons" name="scissors" value="scissors"></button>
-                            </div>
-                        </div>
+<html lang="en-us">
+<head>
+    <title>Rock, Paper, Sciccors | SeaWee games</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="icon" href="assets/images/icons/rock-paper-scissors-icon.png" type="image/icon type">
+    <script src="https://kit.fontawesome.com/48509a2691.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+    <!-- <h1>Rock Paper Scissors</h1> -->
+    <h1>Rock Paper Scissors</h1>
+</header>
+<main>
+    <div id="playerGrid">
+        <div id="playerWins">
+            <span>Wins</span>
+            <span id="score">0</span>
+        </div>
+        <div id="playerCard">
+            <div id="playerSelection"></div>
+            <div id="buttons-area">
+                <div id="buttons">
+                    <div id="rock">
+                        <button class="player-buttons" name="rock" value="rock"></button>
+                    </div>
+                    <div id="paper">
+                        <button class="player-buttons" name="paper" value="paper"></button>
+                    </div>
+                    <div id="scissors">
+                        <button class="player-buttons" name="scissors" value="scissors"></button>
                     </div>
                 </div>
             </div>
-            <div id="roundSummary">
-                <div id="resultsCard">
-                    <div id="selectionResults">
-                        <div id="playerResults"></div>
-                        <div id="computerResults"></div>
+        </div>
+    </div>
+    <div id="roundSummary">
+        <h2>Round <span>1</span></h2>
+        <div id="tieWins">
+            <span>Ties</span>
+            <span id="score">0</span>
+        </div>
+        <div id="resultsCard">
+            <div id="selectionResults">
+                <div id="playerResults"></div>
+                <div id="computerResults"></div>
+            </div>
+            <div id="roundResults">
+                <span>Let's begin!</span>
+            </div>
+        </div>
+    </div>
+    <div id="computerGrid">
+        <div id="computerWins">
+            <span>Wins</span>
+            <span id="score">0</span>
+        </div>
+        <div id="computerCard">
+            <div id="computerSelection"></div>
+            <div id="buttons-area">
+                <div id="buttons">
+                    <div id="rock">
+                        <button name="rock" value="rock"></button>
                     </div>
-                    <div id="roundResults">
-                        <span>Let's begin!</span>
+                    <div id="paper">
+                        <button name="paper" value="paper"></button>
+                    </div>
+                    <div id="scissors">
+                        <button name="scissors" value="scissors"></button>
                     </div>
                 </div>
             </div>
-            <div id="computerGrid">
-                <div id="computerCard">
-                    <div id="computerSelection"></div>
-                    <div id="buttons-area">
-                        <div id="buttons">
-                            <div id="rock">
-                                <button name="rock" value="rock"></button>
-                            </div>
-                            <div id="paper">
-                                <button name="paper" value="paper"></button>
-                            </div>
-                            <div id="scissors">
-                                <button name="scissors" value="scissors"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-        <footer>
-            <div id="finalResults">
-                <p>Whoever scores 5 points first wins the game!</p>
-                <span></span>
-            </div>
-        </footer>
-        <script src="scripts/main.js"></script>
-    </body>
+        </div>
+    </div>
+    <div id="finalResults">
+        <p>Score 5 points to win</p>
+        <span></span>
+    </div>
+</main>
+<footer>
+    <p>Made by Chandra</p>
+    <p>Hosted with <i class="fas fa-heart"></i> by github</p>
+</footer>
+<script src="scripts/main.js"></script>
+</body>
 </html>
