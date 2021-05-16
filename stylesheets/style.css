@@ -1,47 +1,88 @@
 /* Style top level components */
-body {
+.body {
     font-family: "Helvetica Neue", sans-serif;
+    margin: 0;
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
-header {
+.header {
     background-color: gold;
     text-align: center;
-    flex: 100px;
 }
 
 main {
-    background-color: blue;
     flex: 2;
 }
 
-footer {
+.footer {
     background-color: red;
-    flex: 100px;
 }
 
-/* style
+.play-area {
+    margin: 50px;
+    background-color: blue;
+    flex-wrap: wrap;
+    display: flex;
+}
 
+/* style elements in play area */
+.banner {
+    background-color: red;
+    text-align: center;
+    flex: 100%;
+}
 
+.card {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 300px;
+    padding: 10px;
+}
+.summary-card {
+    background-color: gold;
+}
 
+/* style elements in cards */
+.card__img {
+    height: 150px;
+    width: 150px;
+}
 
+.card__img__img {
+    max-width: 100%;
+    height: auto;
+}
 
+.card__options {
+    display: flex;
+}
 
-/* style buttons */
-button {
-    margin:5px;
-    padding: 5px;
-    width: 60px;
-    height: 55px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border: none;
+.card__option {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
 }
 
-button:focus {
-    outline: none;
+.player-card__option {
+    cursor: pointer;
 }
 
+.player-card__option:active {
+    transform: scale(0.9);
+}
+
+.fas {
+    color: gold;
+}
