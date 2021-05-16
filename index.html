@@ -3,85 +3,67 @@
 <head>
     <title>Rock, Paper, Sciccors | SeaWee games</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="stylesheets/reset.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-    <link rel="icon" href="assets/images/icons/rock-paper-scissors-icon.png" type="image/icon type">
+    <link rel="icon" href="assets/images/rock-paper-scissors-icon.png" type="image/icon type">
     <script src="https://kit.fontawesome.com/48509a2691.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<header>
+<body class="body">
+<header class="header">
     <!-- <h1>Rock Paper Scissors</h1> -->
-    <h1>Rock Paper Scissors</h1>
+    <h1 class="header__heading">Rock Paper Scissors</h1>
 </header>
-<main>
-    <div id="playerGrid">
-        <div id="playerWins">
-            <span>Wins</span>
-            <span id="score">0</span>
+<main class="main">
+    <div class="play-area">
+        <div class="banner">
+            <p class="banner__text">Score 5 points to win</p>
         </div>
-        <div id="playerCard">
-            <div id="playerSelection"></div>
-            <div id="buttons-area">
-                <div id="buttons">
-                    <div id="rock">
-                        <button class="player-buttons" name="rock" value="rock"></button>
-                    </div>
-                    <div id="paper">
-                        <button class="player-buttons" name="paper" value="paper"></button>
-                    </div>
-                    <div id="scissors">
-                        <button class="player-buttons" name="scissors" value="scissors"></button>
-                    </div>
+        <div class="card player-card">
+            <div class="card__info">
+                <p class="card__score">0</p>
+            </div>
+            <div class="card__img">
+                <img class="card__img__img" src="assets/images/rock-paper-scissors-icon.png" alt="rock, paper, scissors">
+            </div>
+            <div class="card__options">
+                <div class="card__option player-card__option">
+                    <i class="fas fa-hand-rock fa-2x"></i>
+                </div>
+                <div class="card__option player-card__option">
+                    <i class="fas fa-hand-paper fa-2x"></i>
+                </div>
+                <div class="card__option player-card__option">
+                    <i class="fas fa-hand-scissors fa-2x"></i>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="roundSummary">
-        <h2>Round <span>1</span></h2>
-        <div id="tieWins">
-            <span>Ties</span>
-            <span id="score">0</span>
+        <div class="card summary-card">
+            <h2 class="summary-card__heading">Round <span class="summary-card__round">1</span></h2>
+            <p class="summary-card__info">Let's begin</p>
         </div>
-        <div id="resultsCard">
-            <div id="selectionResults">
-                <div id="playerResults"></div>
-                <div id="computerResults"></div>
+        <div class="card computer-card">
+            <div class="card__info">
+                <p class="card__score">0</p>
             </div>
-            <div id="roundResults">
-                <span>Let's begin!</span>
+            <div class="card__img">
+                <img class="card__img__img" src="assets/images/rock-paper-scissors-icon.png" alt="rock, paper, scissors">
             </div>
-        </div>
-    </div>
-    <div id="computerGrid">
-        <div id="computerWins">
-            <span>Wins</span>
-            <span id="score">0</span>
-        </div>
-        <div id="computerCard">
-            <div id="computerSelection"></div>
-            <div id="buttons-area">
-                <div id="buttons">
-                    <div id="rock">
-                        <button name="rock" value="rock"></button>
-                    </div>
-                    <div id="paper">
-                        <button name="paper" value="paper"></button>
-                    </div>
-                    <div id="scissors">
-                        <button name="scissors" value="scissors"></button>
-                    </div>
+            <div class="card__options">
+                <div class="card__option computer-card__option">
+                    <i class="fas fa-hand-rock fa-2x"></i>
+                </div>
+                <div class="card__option computer-card__option">
+                    <i class="fas fa-hand-paper fa-2x"></i>
+                </div>
+                <div class="card__option computer-card__option">
+                    <i class="fas fa-hand-scissors fa-2x"></i>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="finalResults">
-        <p>Score 5 points to win</p>
-        <span></span>
     </div>
 </main>
-<footer>
-    <p>Made by Chandra</p>
-    <p>Hosted with <i class="fas fa-heart"></i> by github</p>
+<footer class="footer">
+    <p class="footer__creator">Made by Chandra</p>
+    <p class="footer__hosting">Hosted with <i class="fas fa-heart"></i> by github</p>
 </footer>
 <script src="scripts/main.js"></script>
 </body>
