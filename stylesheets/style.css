@@ -18,6 +18,7 @@ main {
 
 .footer {
     background-color: red;
+    text-align: center;
 }
 
 .play-area {
@@ -41,7 +42,7 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 300px;
+    height: 400px;
     padding: 10px;
 }
 .summary-card {
@@ -49,14 +50,19 @@ main {
 }
 
 /* style elements in cards */
+.card__score {
+    font-size: 2em;
+}
+
 .card__img {
     height: 150px;
     width: 150px;
 }
 
 .card__img__img {
+
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
 }
 
 .card__options {
@@ -71,6 +77,7 @@ main {
     align-items: center;
     border-radius: 50%;
     background-color: white;
+    color: gold;
     margin: 5px;
     padding: 5px;
 }
@@ -81,8 +88,4 @@ main {
 
 .player-card__option:active {
     transform: scale(0.9);
-}
-
-.fas {
-    color: gold;
 }

@@ -14,9 +14,8 @@ function newGame() {
 
 function computerPlay() {
     // return a random item
-    randomIndex = Math.floor(Math.random() * 3);
-    randomItem = gameItems[randomIndex];
-    return randomItem;
+    let randomIndex = Math.floor(Math.random() * 3);
+    return gameItems[randomIndex];
 }
 
 function updateSelections(playerSelection, computerSelection) {
@@ -34,7 +33,7 @@ function updateSelections(playerSelection, computerSelection) {
     const playerSelectionResult = document.querySelector('#playerResults');
     playerSelectionResult.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat center`;
     playerSelectionResult.style['background-size'] = "contain";
-    
+
     const computerSelectionResult = document.querySelector('#computerResults');
     computerSelectionResult.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat center`;
     computerSelectionResult.style['background-size'] = "contain";
@@ -74,9 +73,9 @@ function updateResults(playerSelection, computerSelection, winner) {
     const winnerFieldScore = winnerField.querySelector('#score')
 
     winnerFieldScore.textContent = winnerScore;
-    
+
     const roundResultsField = document.querySelector('#roundResults span');
-    let result = winner === "tie" ? 'It\'s a tie' : `${winner} wins!`; 
+    let result = winner === "tie" ? 'It\'s a tie' : `${winner} wins!`;
     roundResultsField.textContent = result;
 }
 
@@ -102,7 +101,7 @@ function resetSelections() {
     const playerSelectionResult = document.querySelector('#playerResults');
     playerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat center`;
     playerSelectionResult.style['background-size'] = "contain";
-    
+
     const computerSelectionResult = document.querySelector('#computerResults');
     computerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat center`;
     computerSelectionResult.style['background-size'] = "contain";
@@ -128,7 +127,7 @@ function resetResults() {
     tieWinsFieldScore.textContent = tieScore;
 
     const roundResultsField = document.querySelector('#roundResults span');
-    roundResultsField.textContent = 'Let\'s begin';    
+    roundResultsField.textContent = 'Let\'s begin';
 }
 
 function resetFinalResults() {
@@ -161,7 +160,7 @@ function playRound(e) {
 
     updateSelections(playerSelection, computerSelection);
     let winner = computeResults(playerSelection, computerSelection);
-    updateResults(playerSelection, computerSelection, winner); 
+    updateResults(playerSelection, computerSelection, winner);
 
     // Reset the scores once one of the players wins 5 points
     if (playerScore === 5 || computerScore === 5) {
@@ -171,5 +170,6 @@ function playRound(e) {
     }
 }
 
-const buttons = document.querySelectorAll('#playerCard button');
+// Play round by choosing one of rock, paper or scissor
+const buttons = document.querySelectorAll('.player-card__option');
 buttons.forEach(button => button.addEventListener('click', playRound) );
