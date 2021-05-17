@@ -8,29 +8,40 @@
 }
 
 .header {
-    background-color: gold;
+    background-color: #e37272;
+    color: white;
     text-align: center;
 }
 
-main {
+.main {
+    background-color: #ffeddb;
     flex: 2;
 }
 
 .footer {
-    background-color: red;
+    background-color: #DB4747;
+    color: #4f4f4f;
     text-align: center;
+}
+
+.footer__creator {
+    margin: 5px;
+}
+.footer__hosting {
+    margin: 5px;
 }
 
 .play-area {
     margin: 50px;
-    background-color: blue;
+    background-color: white;
     flex-wrap: wrap;
     display: flex;
 }
 
 /* style elements in play area */
 .banner {
-    background-color: red;
+    /*background-color: peachpuff;*/
+    color: #4f4f4f;
     text-align: center;
     flex: 100%;
 }
@@ -46,11 +57,13 @@ main {
     padding: 10px;
 }
 .summary-card {
-    background-color: gold;
+    background-color: #72E3E3;
+    color: #4f4f4f;
 }
 
 /* style elements in cards */
 .card__score {
+    color: #797878;
     font-size: 2em;
 }
 
@@ -76,8 +89,8 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    background-color: white;
-    color: gold;
+    background-color: #e37272;
+    color: white;
     margin: 5px;
     padding: 5px;
 }
