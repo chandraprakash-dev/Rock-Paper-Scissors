@@ -8,13 +8,12 @@
 }
 
 .header {
-    background-color: #e37272;
+    background-color: #DB4747;
     color: white;
     text-align: center;
 }
 
 .main {
-    background-color: #ffeddb;
     flex: 2;
 }
 
@@ -33,21 +32,30 @@
 
 .play-area {
     margin: 50px;
-    background-color: white;
-    flex-wrap: wrap;
+    box-shadow: 0 0 5px 3px #b5b5b5;
+}
+
+.cards {
     display: flex;
+    align-items: center;
 }
 
 /* style elements in play area */
 .banner {
-    /*background-color: peachpuff;*/
-    color: #4f4f4f;
+    background-color: gray;
+    color: white;
+    padding: 10px;
     text-align: center;
     flex: 100%;
 }
 
+.banner__text {
+    font-size: 1.3em;
+    margin: 0;
+}
+
 .card {
-    flex: 1;
+    flex: 2;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -57,8 +65,11 @@
     padding: 10px;
 }
 .summary-card {
-    background-color: #72E3E3;
+    background-color: #23dccd;
     color: #4f4f4f;
+    justify-self: center;
+    height: 50%;
+    flex: 1;
 }
 
 /* style elements in cards */
