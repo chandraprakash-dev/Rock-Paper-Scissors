@@ -14,44 +14,16 @@ function newGame() {
 }
 
 function updateSelections(playerSelection, computerSelection) {
-  const roundNoField = document.querySelector('h2 span');
-  roundNoField.textContent = roundNo++;
+  const roundNoField = document.querySelector('.summary-card__round');
+  roundNoField.textContent = `${roundNo++}`;
 
-  // const playerSelectionField = document.querySelector('#playerSelection');
-  // playerSelectionField.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat center`;
-  // playerSelectionField.style['background-size'] = "contain";
+  const playerSelectionImage = document.querySelector('.player-card__img__img');
+  playerSelectionImage.src = `./assets/images/${playerSelection}.png`;
 
-  // const computerSelectionField = document.querySelector('#computerSelection');
-  // computerSelectionField.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat center`;
-  // computerSelectionField.style['background-size'] = "contain";
-
-  // const playerSelectionResult = document.querySelector('#playerResults');
-  // playerSelectionResult.style['background'] = `url('assets/images/selections/${playerSelection}.png')  no-repeat center`;
-  // playerSelectionResult.style['background-size'] = "contain";
-  //
-  // const computerSelectionResult = document.querySelector('#computerResults');
-  // computerSelectionResult.style['background'] = `url('assets/images/selections/${computerSelection}.png')  no-repeat center`;
-  // computerSelectionResult.style['background-size'] = "contain";
+  const computerSelectionImage = document.querySelector('.computer-card__img__img');
+  computerSelectionImage.src = `./assets/images/${computerSelection}.png`;
 }
 
-function updateResults(playerSelection, computerSelection, winner) {
-  let winnerScore;
-  if (winner === "computer") {
-    winnerScore = computerScore;
-  } else if (winner === "player") {
-    winnerScore = playerScore;
-  }
-
-  console.log('winner is ' + winner);
-  if (winner !== 'tie') {
-    const winnerField = document.querySelector(`.${winner}-card__score`);
-    winnerField.textContent = winnerScore;
-  }
-
-  const roundResultsField = document.querySelector('.summary-card__info');
-  let result = winner === "tie" ? 'It\'s a tie' : `${winner} wins!`;
-  roundResultsField.textContent = result;
-}
 
 function updateFinalResults(winner) {
   const finalResults = document.querySelector('.banner');
@@ -118,6 +90,24 @@ function resetFinalResults() {
 //         window.open("./gameOver.html", "_self");
 //     }
 // }
+function updateResults(playerSelection, computerSelection, winner, msg) {
+    let winnerScore;
+    if (winner === "computer") {
+        winnerScore = computerScore;
+    } else if (winner === "player") {
+        winnerScore = playerScore;
+    }
+
+    console.log('winner is ' + winner);
+    if (winner !== 'tie') {
+        const winnerField = document.querySelector(`.${winner}-card__score`);
+        winnerField.textContent = winnerScore;
+    }
+
+    const roundResultsField = document.querySelector('.summary-card__info');
+    roundResultsField.textContent = msg;
+}
+
 function computeResults(playerSelection, computerSelection) {
   let msg, winner;
   if (playerSelection === computerSelection) {
@@ -156,7 +146,7 @@ function playRound(playerSelection) {
   updateSelections(playerSelection, computerSelection);
   console.log(playerSelection, computerSelection);
   let {winner, msg} = computeResults(playerSelection, computerSelection);
-  updateResults(playerSelection, computerSelection, winner);
+  updateResults(playerSelection, computerSelection, winner, msg);
 
   // Reset the scores once one of the players wins 5 points
   if (playerScore === 5 || computerScore === 5) {
@@ -169,9 +159,10 @@ function playRound(playerSelection) {
 // Play round by choosing one of rock, paper or scissor
 const playerOptions = document.querySelector('.player-card__options');
 playerOptions.addEventListener('click', (e) => {
-    console.log(e.target.tagName);
-  if(e.target.tagName !== 'I') return;
   const optionDiv = e.target.closest('div');
+  console.log(e.target);
+  if(!optionDiv.classList.contains('card__option')) return;
+
   const option = optionDiv.getAttribute('data-option');
   playRound(option);
 });
