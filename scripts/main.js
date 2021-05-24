@@ -54,13 +54,8 @@ function updateResults(playerSelection, computerSelection, winner) {
 }
 
 function updateFinalResults(winner) {
-  const finalResults = document.querySelector('#finalResults');
-
-  const finalResultsMessage = finalResults.querySelector('p');
-  finalResultsMessage.textContent = `${winner} wins the game!`;
-
-  const finalResultsScore = finalResults.querySelector('span');
-  finalResultsScore.textContent = `${playerScore} : ${computerScore}`;
+  const finalResults = document.querySelector('.banner');
+  finalResults.textContent = `${winner} wins the game!`;
 }
 
 function resetSelections() {
@@ -174,6 +169,8 @@ function playRound(playerSelection) {
 // Play round by choosing one of rock, paper or scissor
 const playerOptions = document.querySelector('.player-card__options');
 playerOptions.addEventListener('click', (e) => {
+    console.log(e.target.tagName);
+  if(e.target.tagName !== 'I') return;
   const optionDiv = e.target.closest('div');
   const option = optionDiv.getAttribute('data-option');
   playRound(option);

@@ -73,6 +73,10 @@
 }
 
 /* style elements in cards */
+.card__info-name {
+    margin: 0;
+}
+
 .card__score {
     color: #797878;
     font-size: 2em;
