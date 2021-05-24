@@ -1,11 +1,25 @@
+/************************************************************************************/
 gameItems = ['rock', 'paper', 'scissors'];
 itemDefeats = {
   'rock': 'scissors',
   'paper': 'rock',
   'scissors': 'paper'
 }
-playerScore = computerScore = tieScore = 0;
-roundNo = 1;
+let playerScore = 0;
+let computerScore = 0;
+let tieScore = 0;
+let roundNo = 1;
+
+const roundNoField = document.querySelector('.summary-card__round');
+const playerSelectionImage = document.querySelector('.player-card__img__img');
+const computerSelectionImage = document.querySelector('.computer-card__img__img');
+const playerScoreField = document.querySelector('.player-card__score');
+const computerScoreField = document.querySelector('.computer-card__score');
+
+const finalResults = document.querySelector('.banner');
+const roundResultsField = document.querySelector('.summary-card__info');
+
+/************************************************************************************/
 
 function newGame() {
   resetSelections();
@@ -14,82 +28,47 @@ function newGame() {
 }
 
 function updateSelections(playerSelection, computerSelection) {
-  const roundNoField = document.querySelector('.summary-card__round');
   roundNoField.textContent = `${roundNo++}`;
-
-  const playerSelectionImage = document.querySelector('.player-card__img__img');
   playerSelectionImage.src = `./assets/images/${playerSelection}.png`;
-
-  const computerSelectionImage = document.querySelector('.computer-card__img__img');
   computerSelectionImage.src = `./assets/images/${computerSelection}.png`;
 }
 
 
 function updateFinalResults(winner) {
-  const finalResults = document.querySelector('.banner');
   finalResults.textContent = `${winner} wins the game!`;
 }
 
 function resetSelections() {
-  // const playerSelectionField = document.querySelector('#playerSelection');
-  // playerSelectionField.style['background'] = `url('assets/images/selections/rpslogo.png')  no-repeat`;
-  // playerSelectionField.style['background-size'] = "cover";
-  //
-  // const computerSelectionField = document.querySelector('#computerSelection');
-  // computerSelectionField.style['background'] = `url('assets/images/selections/rpslogo.png')  no-repeat`;
-  // computerSelectionField.style['background-size'] = "cover";
-  //
-  // const playerSelectionResult = document.querySelector('#playerResults');
-  // playerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat center`;
-  // playerSelectionResult.style['background-size'] = "contain";
-  //
-  // const computerSelectionResult = document.querySelector('#computerResults');
-  // computerSelectionResult.style['background'] = `url('assets/images/selections/rpslogosmall.png')  no-repeat center`;
-  // computerSelectionResult.style['background-size'] = "contain";
+    roundNoField.textContent = `${roundNo++}`;
+    playerSelectionImage.src = `./assets/images/rock.png`;
+    computerSelectionImage.src = `./assets/images/rock.png`;
 }
 
 function resetResults() {
-  let playerScore = computerScore = tieScore = 0;
-  let roundNo = 1;
+    playerScore = computerScore = tieScore = 0;
+  roundNo = 1;
 
-  const roundNoField = document.querySelector('h2 span');
   roundNoField.textContent = roundNo;
 
-  const playerWinsField = document.querySelector('#playerWins');
-  const playerWinsFieldScore = playerWinsField.querySelector('#score')
-  playerWinsFieldScore.textContent = playerScore;
-
-  const computerWinsField = document.querySelector('#computerWins');
-  const computerWinsFieldScore = computerWinsField.querySelector('#score')
-  computerWinsFieldScore.textContent = computerScore;
-
-  const tieWinsField = document.querySelector('#tieWins');
-  const tieWinsFieldScore = tieWinsField.querySelector('#score')
-  tieWinsFieldScore.textContent = tieScore;
-
-  const roundResultsField = document.querySelector('#roundResults span');
+    playerScoreField.textContent = playerScore;
+  computerScoreField.textContent = computerScore;
   roundResultsField.textContent = 'Let\'s begin';
 }
 
 function resetFinalResults() {
-  const finalResults = document.querySelector('#finalResults');
-
-  const finalResultsMessage = finalResults.querySelector('p');
-  finalResultsMessage.textContent = 'Whoever scores 5 points first wins the game!';
-
-  const finalResultsScore = finalResults.querySelector('span');
-  finalResultsScore.textContent = '';
+    finalResults.textContent = 'Score 5 points to win';
 }
 
-// function wantsToPlayAgain() {
-//     answer = prompt("Do you want to play again?");
+function wantsToPlayAgain() {
+    let answer = prompt("Do you want to play again?");
 
-//     if(answer != "no") {
-//         newGame();
-//     } else {
-//         window.open("./gameOver.html", "_self");
-//     }
-// }
+    if(answer !== "no") {
+        newGame();
+    } else {
+        window.open("./gameOver.html", "_self");
+    }
+}
+
 function updateResults(playerSelection, computerSelection, winner, msg) {
     let winnerScore;
     if (winner === "computer") {
@@ -104,7 +83,6 @@ function updateResults(playerSelection, computerSelection, winner, msg) {
         winnerField.textContent = winnerScore;
     }
 
-    const roundResultsField = document.querySelector('.summary-card__info');
     roundResultsField.textContent = msg;
 }
 
@@ -138,7 +116,7 @@ function computerPlay() {
 
 function playRound(playerSelection) {
   if (playerScore === 5 || computerScore === 5) {
-    newGame();
+      wantsToPlayAgain();
   }
   // functionality to check who wins the round
   const computerSelection = computerPlay();
@@ -152,7 +130,6 @@ function playRound(playerSelection) {
   if (playerScore === 5 || computerScore === 5) {
     winner = playerScore === 5 ? 'player' : 'computer';
     updateFinalResults(winner);
-    // wantsToPlayAgain();
   }
 }
 
