@@ -89,14 +89,17 @@ function updateResults(playerSelection, computerSelection, winner, msg) {
 function computeResults(playerSelection, computerSelection) {
   let msg, winner;
   if (playerSelection === computerSelection) {
+    playSound('tie');
     msg = `This round is a draw ${playerSelection} cant beat ${computerSelection}. `;
     winner = "tie";
     tieScore++;
   } else if (itemDefeats[playerSelection] === computerSelection) {
+    playSound(playerSelection);
     msg = `You win this round! ${playerSelection} beats ${computerSelection}. `;
     winner = "player";
     playerScore++;
   } else if (itemDefeats[computerSelection] === playerSelection) {
+    playSound(computerSelection);
     msg = `Computer wins this round! ${computerSelection} beats ${playerSelection}. `;
     winner = "computer"
     computerScore++;
@@ -133,13 +136,21 @@ function playRound(playerSelection) {
   }
 }
 
+function playSound(sound) {
+  const audio = document.querySelector(`.${sound}-sound`);
+  console.log(audio);
+  audio.currentTime = 0;
+  audio.currentTime = 0;
+  audio.play();
+}
+
 // Play round by choosing one of rock, paper or scissor
 const playerOptions = document.querySelector('.player-card__options');
 playerOptions.addEventListener('click', (e) => {
   const optionDiv = e.target.closest('div');
   console.log(e.target);
   if(!optionDiv.classList.contains('card__option')) return;
-
+  playSound('click');
   const option = optionDiv.getAttribute('data-option');
   playRound(option);
 });
