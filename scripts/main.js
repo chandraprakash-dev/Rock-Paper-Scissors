@@ -140,7 +140,6 @@ function playSound(sound) {
   const audio = document.querySelector(`.${sound}-sound`);
   console.log(audio);
   audio.currentTime = 0;
-  audio.currentTime = 0;
   audio.play();
 }
 
