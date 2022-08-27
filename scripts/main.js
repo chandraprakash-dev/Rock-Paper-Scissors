@@ -1,10 +1,10 @@
 /************************************************************************************/
-gameItems = ['rock', 'paper', 'scissors'];
-itemDefeats = {
-  'rock': 'scissors',
-  'paper': 'rock',
-  'scissors': 'paper'
-}
+objects = [
+  {name: 'rock', action: 'crushes', beats: 'scissors'},
+  {name: 'paper', action: 'covers', beats: 'rock'},
+  {name: 'scissors', action: 'cuts', beats: 'paper'}
+];
+
 // let playerScore = 0;
 // let computerScore = 0;
 // let tieScore = 0;
@@ -114,8 +114,11 @@ itemDefeats = {
 function getComputerChoice() {
   // return a random item
   let randomIndex = Math.floor(Math.random() * 3);
-  return gameItems[randomIndex];
+  return objects[randomIndex];
 }
+
+const playerSelection = 'Rock';
+const computerSelection = getComputerChoice();
 
 // function playRound(playerSelection) {
 //   if (playerScore === 5 || computerScore === 5) {
