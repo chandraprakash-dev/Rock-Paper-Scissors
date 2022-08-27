@@ -117,14 +117,13 @@ function getComputerChoice() {
   return objects[randomIndex];
 }
 
-function getWinningObject(playerObject, computerObject) {
-  // if they are the same objects, there is no winning object
-  if (playerObject.name === computerObject.name) return null;
-  return playerObject.beats === computerObject.name ? playerObject : computerObject;
-}
-
 function playRound(playerSelection, computerSelection) {
-  const winningObject = getWinningObject(playerSelection, computerSelection);
+  if (playerSelection.name === computerSelection.name) return 'It is a tie';
+  if (playerSelection.beats === computerSelection.name) {
+    return `You win! ${playerSelection.name} ${playerSelection.action} ${computerSelection.name}`;
+  } else {
+    return `You lose! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`
+  }
 }
 
 const playerSelection = {name: 'rock', action: 'crushes', beats: 'scissors'};
