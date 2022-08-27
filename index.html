@@ -1,81 +1,81 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-    <title>Rock, Paper, Sciccors | SeaWee games</title>
+    <title>Rock Paper Scissors</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="icon" href="assets/images/rock-paper-scissors-icon.png" type="image/icon type">
     <script src="https://kit.fontawesome.com/48509a2691.js" crossorigin="anonymous"></script>
 </head>
 <body class="body">
-<header class="header">
-    <!-- <h1>Rock Paper Scissors</h1> -->
-    <h1 class="header__heading">Rock Paper Scissors</h1>
-</header>
-<main class="main">
-    <audio class="click-sound" src="assets/sounds/mouse_click.mp3"></audio>
-    <audio class="rock-sound" src="assets/sounds/rock.mp3"></audio>
-    <audio class="paper-sound" src="assets/sounds/paper.mp3"></audio>
-    <audio class="scissors-sound" src="assets/sounds/scissors.mp3"></audio>
-    <audio class="tie-sound" src="assets/sounds/tie.mp3"></audio>
-    <div class="play-area">
-        <div class="banner">
-            <p class="banner__text">Score 5 points to win</p>
+    <header class="header">
+        <!-- <h1>Rock Paper Scissors</h1> -->
+        <h1 class="header__heading">Rock Paper Scissors</h1>
+    </header>
+    <main class="main">
+        <audio class="click-sound" src="assets/sounds/mouse_click.mp3"></audio>
+        <audio class="rock-sound" src="assets/sounds/rock.mp3"></audio>
+        <audio class="paper-sound" src="assets/sounds/paper.mp3"></audio>
+        <audio class="scissors-sound" src="assets/sounds/scissors.mp3"></audio>
+        <audio class="tie-sound" src="assets/sounds/tie.mp3"></audio>
+        <div class="play-area">
+            <div class="banner">
+                <p class="banner__text">Score 5 points to win</p>
+            </div>
+            <div class="cards">
+                <div class="card player-card">
+                    <div class="card__info">
+                        <h3 class="card__info-name">Player</h3>
+                        <p class="card__score player-card__score">0</p>
+                    </div>
+                    <div class="card__img">
+        <!--                <img class="card__img__img" src="assets/images/rock-paper-scissors-icon.png" alt="rock, paper, scissors">-->
+                        <img class="card__img__img player-card__img__img" src="assets/images/rock.png" alt="rock"/>
+                    </div>
+                    <div class="card__options player-card__options">
+                        <div class="card__option player-card__option" data-option="rock">
+                            <i class="fas fa-hand-rock fa-2x"></i>
+                        </div>
+                        <div class="card__option player-card__option" data-option="paper">
+                            <i class="fas fa-hand-paper fa-2x"></i>
+                        </div>
+                        <div class="card__option player-card__option" data-option="scissors">
+                            <i class="fas fa-hand-scissors fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card summary-card">
+                    <h2 class="summary-card__heading">Round <span class="summary-card__round">1</span></h2>
+                    <p class="summary-card__info">Let's begin</p>
+                </div>
+                <div class="card computer-card">
+                    <div class="card__info">
+                        <h3 class="card__info-name">Computer</h3>
+                        <p class="card__score computer-card__score">0</p>
+                    </div>
+                    <div class="card__img">
+                        <!--<img class="card__img__img" src="assets/images/rock-paper-scissors-icon.png" alt="rock, paper, scissors">-->
+                        <img class="card__img__img computer-card__img__img" src="assets/images/paper.png" alt="rock paper scissors"/>
+                    </div>
+                    <div class="card__options">
+                        <div class="card__option computer-card__option">
+                            <i class="fas fa-hand-rock fa-2x"></i>
+                        </div>
+                        <div class="card__option computer-card__option">
+                            <i class="fas fa-hand-paper fa-2x"></i>
+                        </div>
+                        <div class="card__option computer-card__option">
+                            <i class="fas fa-hand-scissors fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="cards">
-            <div class="card player-card">
-                <div class="card__info">
-                    <h3 class="card__info-name">Player</h3>
-                    <p class="card__score player-card__score">0</p>
-                </div>
-                <div class="card__img">
-    <!--                <img class="card__img__img" src="assets/images/rock-paper-scissors-icon.png" alt="rock, paper, scissors">-->
-                    <img class="card__img__img player-card__img__img" src="assets/images/rock.png" alt="rock"/>
-                </div>
-                <div class="card__options player-card__options">
-                    <div class="card__option player-card__option" data-option="rock">
-                        <i class="fas fa-hand-rock fa-2x"></i>
-                    </div>
-                    <div class="card__option player-card__option" data-option="paper">
-                        <i class="fas fa-hand-paper fa-2x"></i>
-                    </div>
-                    <div class="card__option player-card__option" data-option="scissors">
-                        <i class="fas fa-hand-scissors fa-2x"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card summary-card">
-                <h2 class="summary-card__heading">Round <span class="summary-card__round">1</span></h2>
-                <p class="summary-card__info">Let's begin</p>
-            </div>
-            <div class="card computer-card">
-                <div class="card__info">
-                    <h3 class="card__info-name">Computer</h3>
-                    <p class="card__score computer-card__score">0</p>
-                </div>
-                <div class="card__img">
-    <!--                <img class="card__img__img" src="assets/images/rock-paper-scissors-icon.png" alt="rock, paper, scissors">-->
-                    <img class="card__img__img computer-card__img__img" src="assets/images/paper.png"/>
-                </div>
-                <div class="card__options">
-                    <div class="card__option computer-card__option">
-                        <i class="fas fa-hand-rock fa-2x"></i>
-                    </div>
-                    <div class="card__option computer-card__option">
-                        <i class="fas fa-hand-paper fa-2x"></i>
-                    </div>
-                    <div class="card__option computer-card__option">
-                        <i class="fas fa-hand-scissors fa-2x"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-<footer class="footer">
-    <p class="footer__creator">Made by Chandra</p>
-    <p class="footer__hosting">Hosted with <i class="fas fa-heart"></i> by github</p>
-</footer>
-<script src="scripts/main.js"></script>
+    </main>
+    <footer class="footer">
+        <p class="footer__creator">Made by Chandra</p>
+        <p class="footer__hosting">Hosted with <i class="fas fa-heart"></i> by github</p>
+    </footer>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
