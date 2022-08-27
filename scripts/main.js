@@ -117,8 +117,20 @@ function getComputerChoice() {
   return objects[randomIndex];
 }
 
-const playerSelection = 'Rock';
+function getWinningObject(playerObject, computerObject) {
+  // if they are the same objects, there is no winning object
+  if (playerObject.name === computerObject.name) return null;
+  return playerObject.beats === computerObject.name ? playerObject : computerObject;
+}
+
+function playRound(playerSelection, computerSelection) {
+  const winningObject = getWinningObject(playerSelection, computerSelection);
+}
+
+const playerSelection = {name: 'rock', action: 'crushes', beats: 'scissors'};
 const computerSelection = getComputerChoice();
+
+playRound(playerSelection, computerSelection);
 
 // function playRound(playerSelection) {
 //   if (playerScore === 5 || computerScore === 5) {
