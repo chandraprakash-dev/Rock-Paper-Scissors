@@ -126,11 +126,18 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = {name: 'rock', action: 'crushes', beats: 'scissors'};
-const computerSelection = getComputerChoice();
+function game() {
+  // a game consists of 5 rounds
+  for(let i = 0; i < 5; i ++) {
+    const playerSelection = {name: 'rock', action: 'crushes', beats: 'scissors'};
+    const computerSelection = getComputerChoice();
 
-playRound(playerSelection, computerSelection);
+    const result = playRound(playerSelection, computerSelection);
+    console.log(result);
+  }
+}
 
+game();
 // function playRound(playerSelection) {
 //   if (playerScore === 5 || computerScore === 5) {
 //       wantsToPlayAgain();
