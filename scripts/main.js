@@ -119,20 +119,20 @@ function getComputerChoice() {
 
 function getGameResult(playerScore, computerScore) {
   if(playerScore > computerScore) {
-    return `You win! you beat the computer ${playerScore}-${computerScore}`;
+    return `You won the game! you beat the computer ${playerScore}-${computerScore}`;
   } else if(playerScore === computerScore) {
-    return 'It is a tie.';
+    return 'The game ended in a draw';
   } else {
-    return `You lose! Computer beat you ${computerScore}-${playerScore}`;
+    return `You lost the game! Computer beat you ${computerScore}-${playerScore}`;
   }
 }
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection.name === computerSelection.name) return 'It is a tie';
   if (playerSelection.beats === computerSelection.name) {
-    return `You win! ${playerSelection.name} ${playerSelection.action} ${computerSelection.name}`;
+    return `You win this round! ${playerSelection.name} ${playerSelection.action} ${computerSelection.name}`;
   } else {
-    return `You lose! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`
+    return `You lose this round! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`
   }
 }
 
