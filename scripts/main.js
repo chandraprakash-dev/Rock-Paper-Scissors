@@ -117,6 +117,16 @@ function getComputerChoice() {
   return objects[randomIndex];
 }
 
+function getGameResult(playerScore, computerScore) {
+  if(playerScore > computerScore) {
+    return `You win! you beat the computer ${playerScore}-${computerScore}`;
+  } else if(playerScore === computerScore) {
+    return 'It is a tie.';
+  } else {
+    return `You lose! Computer beat you ${computerScore}-${playerScore}`;
+  }
+}
+
 function playRound(playerSelection, computerSelection) {
   if (playerSelection.name === computerSelection.name) return 'It is a tie';
   if (playerSelection.beats === computerSelection.name) {
@@ -127,6 +137,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
   // a game consists of 5 rounds
   for(let i = 0; i < 5; i ++) {
     const playerSelection = {name: 'rock', action: 'crushes', beats: 'scissors'};
@@ -134,7 +147,13 @@ function game() {
 
     const result = playRound(playerSelection, computerSelection);
     console.log(result);
+
+    if(result.includes('win')) playerScore++;
+    if(result.includes('lose'))computerScore++;
   }
+
+  const gameResult = getGameResult(playerScore, computerScore);
+  console.log(gameResult)
 }
 
 game();
