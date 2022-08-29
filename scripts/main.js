@@ -1,8 +1,8 @@
 /************************************************************************************/
 objects = [
-  {name: 'rock', action: 'crushes', beats: 'scissors'},
-  {name: 'paper', action: 'covers', beats: 'rock'},
-  {name: 'scissors', action: 'cuts', beats: 'paper'}
+  { name: "rock", action: "crushes", beats: "scissors" },
+  { name: "paper", action: "covers", beats: "rock" },
+  { name: "scissors", action: "cuts", beats: "paper" },
 ];
 
 // let playerScore = 0;
@@ -118,21 +118,21 @@ function getComputerChoice() {
 }
 
 function getGameResult(playerScore, computerScore) {
-  if(playerScore > computerScore) {
+  if (playerScore > computerScore) {
     return `You won the game! you beat the computer ${playerScore}-${computerScore}`;
-  } else if(playerScore === computerScore) {
-    return 'The game ended in a draw';
+  } else if (playerScore === computerScore) {
+    return "The game ended in a draw";
   } else {
     return `You lost the game! Computer beat you ${computerScore}-${playerScore}`;
   }
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection.name === computerSelection.name) return 'It is a tie';
+  if (playerSelection.name === computerSelection.name) return "It is a tie";
   if (playerSelection.beats === computerSelection.name) {
     return `You win this round! ${playerSelection.name} ${playerSelection.action} ${computerSelection.name}`;
   } else {
-    return `You lose this round! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`
+    return `You lose this round! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`;
   }
 }
 
@@ -141,22 +141,25 @@ function game() {
   let computerScore = 0;
 
   // a game consists of 5 rounds
-  for(let i = 0; i < 5; i ++) {
-    const playerSelection = {name: 'rock', action: 'crushes', beats: 'scissors'};
+  for (let i = 0; i < 5; i++) {
+    const playerSelection = {
+      name: "rock",
+      action: "crushes",
+      beats: "scissors",
+    };
     const computerSelection = getComputerChoice();
 
     const result = playRound(playerSelection, computerSelection);
     console.log(result);
 
-    if(result.includes('win')) playerScore++;
-    if(result.includes('lose'))computerScore++;
+    if (result.includes("win")) playerScore++;
+    if (result.includes("lose")) computerScore++;
   }
 
   const gameResult = getGameResult(playerScore, computerScore);
-  console.log(gameResult)
+  console.log(gameResult);
 }
 
-game();
 // function playRound(playerSelection) {
 //   if (playerScore === 5 || computerScore === 5) {
 //       wantsToPlayAgain();
@@ -183,13 +186,13 @@ game();
 //   audio.play();
 // }
 
-// // Play round by choosing one of rock, paper or scissor
-// const playerOptions = document.querySelector('.player-card__options');
-// playerOptions.addEventListener('click', (e) => {
-//   const optionDiv = e.target.closest('div');
-//   console.log(e.target);
-//   if(!optionDiv.classList.contains('card__option')) return;
-//   playSound('click');
-//   const option = optionDiv.getAttribute('data-option');
-//   playRound(option);
-// });
+// Play round by choosing one of rock, paper or scissor
+const playerOptions = document.querySelector(".player-card__options");
+playerOptions.addEventListener("click", (e) => {
+  const optionDiv = e.target.closest("div");
+  console.log(e.target);
+  if (!optionDiv.classList.contains("card__option")) return;
+  // playSound("click");
+  const object = optionDiv.getAttribute("data-option");
+  playRound(object);
+});
