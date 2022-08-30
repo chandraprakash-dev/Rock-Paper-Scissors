@@ -149,13 +149,12 @@ function playRound(playerSelection) {
   // }
 }
 
-//
-// function playSound(sound) {
-//   const audio = document.querySelector(`.${sound}-sound`);
-//   console.log(audio);
-//   audio.currentTime = 0;
-//   audio.play();
-// }
+function playSound(sound) {
+  const audio = document.querySelector(`.${sound}-sound`);
+  console.log(audio);
+  audio.currentTime = 0;
+  audio.play();
+}
 
 // Play round by choosing one of rock, paper or scissor
 const playerOptions = document.querySelector(".player-card__options");
@@ -163,7 +162,7 @@ playerOptions.addEventListener("click", (e) => {
   const optionDiv = e.target.closest("div");
   console.log(e.target);
   if (!optionDiv.classList.contains("card__option")) return;
-  // playSound("click");
+  playSound("click");
   const option = optionDiv.getAttribute("data-option");
   const object = objects[option];
   playRound(object);
