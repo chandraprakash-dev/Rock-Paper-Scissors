@@ -11,8 +11,10 @@ let computerScore = 0;
 // let roundNo = 1;
 //
 // const roundNoField = document.querySelector('.summary-card__round');
-// const playerSelectionImage = document.querySelector(".player-card__img__img");
-// const computerSelectionImage = document.querySelector(".computer-card__img__img" );
+const playerSelectionImage = document.querySelector(".player-card__img__img");
+const computerSelectionImage = document.querySelector(
+  ".computer-card__img__img"
+);
 // const playerScoreField = document.querySelector(".player-card__score");
 // const computerScoreField = document.querySelector(".computer-card__score");
 //
@@ -27,13 +29,12 @@ let computerScore = 0;
 //   resetFinalResults();
 // }
 
-// function updateSelections(playerSelection, computerSelection) {
-//   // roundNoField.textContent = `${roundNo++}`;
-//   playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
-//   computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
-// }
-//
-//
+function updateSelections(playerSelection, computerSelection) {
+  // roundNoField.textContent = `${roundNo++}`;
+  playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
+  computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
+}
+
 // function updateFinalResults(winner) {
 //   finalResults.textContent = `${winner} wins the game!`;
 // }
@@ -132,7 +133,7 @@ function playRound(playerSelection) {
   // functionality to check who wins the round
   const computerSelection = getComputerChoice();
   console.log(playerSelection, computerSelection);
-  // updateSelections(playerSelection, computerSelection);
+  updateSelections(playerSelection, computerSelection);
 
   const result = getRoundResult(playerSelection, computerSelection);
 
@@ -147,6 +148,7 @@ function playRound(playerSelection) {
   //   updateFinalResults(winner);
   // }
 }
+
 //
 // function playSound(sound) {
 //   const audio = document.querySelector(`.${sound}-sound`);
