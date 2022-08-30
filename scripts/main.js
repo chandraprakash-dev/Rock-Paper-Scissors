@@ -15,11 +15,11 @@ const playerSelectionImage = document.querySelector(".player-card__img__img");
 const computerSelectionImage = document.querySelector(
   ".computer-card__img__img"
 );
-// const playerScoreField = document.querySelector(".player-card__score");
-// const computerScoreField = document.querySelector(".computer-card__score");
+const playerScoreField = document.querySelector(".player-card__score");
+const computerScoreField = document.querySelector(".computer-card__score");
 //
 // const finalResults = document.querySelector('.banner');
-// const roundResultsField = document.querySelector(".summary-card__info");
+const roundResultsField = document.querySelector(".summary-card__info");
 //
 // /************************************************************************************/
 //
@@ -70,12 +70,12 @@ function updateSelections(playerSelection, computerSelection) {
 //     }
 // }
 //
-// function updateResults(result) {
-//   console.log(result);
-//   roundResultsField.textContent = result;
-//   playerScoreField.textContent = playerScore;
-//   computerScoreField.textContent = computerScore;
-// }
+function updateResults(result) {
+  console.log(result);
+  roundResultsField.textContent = result;
+  playerScoreField.textContent = playerScore;
+  computerScoreField.textContent = computerScore;
+}
 
 function getComputerChoice() {
   // return a random item
@@ -141,7 +141,7 @@ function playRound(playerSelection) {
   if (result.includes("lose")) computerScore++;
 
   console.log(result);
-  // updateResults(result);
+  updateResults(result);
   // // Reset the scores once one of the players wins 5 points
   // if (playerScore === 5 || computerScore === 5) {
   //   winner = playerScore === 5 ? "player" : "computer";
