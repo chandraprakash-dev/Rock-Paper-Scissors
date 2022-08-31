@@ -7,69 +7,49 @@ const objects = [
 
 let playerScore = 0;
 let computerScore = 0;
-// let tieScore = 0;
-// let roundNo = 1;
-//
-// const roundNoField = document.querySelector('.summary-card__round');
+
 const playerSelectionImage = document.querySelector(".player-card__img__img");
 const computerSelectionImage = document.querySelector(
   ".computer-card__img__img"
 );
 const playerScoreField = document.querySelector(".player-card__score");
 const computerScoreField = document.querySelector(".computer-card__score");
-//
-// const finalResults = document.querySelector('.banner');
+
 const roundResultsField = document.querySelector(".summary-card__info");
-//
-// /************************************************************************************/
-//
+/************************************************************************************/
+
 // function newGame() {
 //   resetSelections();
 //   resetResults();
-//   resetFinalResults();
 // }
 
 function updateSelections(playerSelection, computerSelection) {
-  // roundNoField.textContent = `${roundNo++}`;
   playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
   computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
 }
 
-// function updateFinalResults(winner) {
-//   finalResults.textContent = `${winner} wins the game!`;
-// }
-//
 // function resetSelections() {
-//     roundNoField.textContent = `${roundNo++}`;
 //     playerSelectionImage.src = `./assets/images/rock.png`;
 //     computerSelectionImage.src = `./assets/images/rock.png`;
 // }
 //
 // function resetResults() {
-//     playerScore = computerScore = tieScore = 0;
-//   roundNo = 1;
-//
-//   roundNoField.textContent = roundNo;
-//
-// playerScoreField.textContent = playerScore;
-// computerScoreField.textContent = computerScore;
-// roundResultsField.textContent = "Let's begin";
+//   playerScore = computerScore = 0;
+//   playerScoreField.textContent = playerScore;
+//   computerScoreField.textContent = computerScore;
+//   roundResultsField.textContent = "Let's begin";
 // }
-//
-// function resetFinalResults() {
-//     finalResults.textContent = 'Score 5 points to win';
-// }
-//
-// function wantsToPlayAgain() {
-//     let answer = prompt("Do you want to play again?");
-//
-//     if(answer !== "no") {
-//         newGame();
-//     } else {
-//         window.open("./gameOver.html", "_self");
-//     }
-// }
-//
+
+function wantsToPlayAgain() {
+    let answer = prompt("Do you want to play again?");
+    console.log(answer);
+    if(answer !== "no") {
+        newGame();
+    } else {
+        window.open("./gameOver.html", "_self");
+    }
+}
+
 function updateResults(result) {
   console.log(result);
   roundResultsField.textContent = result;
@@ -94,42 +74,20 @@ function getGameResult(playerScore, computerScore) {
 }
 
 function getRoundResult(playerSelection, computerSelection) {
-  if (playerSelection.name === computerSelection.name) return "It is a tie";
+  if (playerSelection.name === computerSelection.name) {
+    playSound("tie");
+    return "It is a tie";
+  }
   if (playerSelection.beats === computerSelection.name) {
+    playSound(playerSelection.name);
     return `You win this round! ${playerSelection.name} ${playerSelection.action} ${computerSelection.name}`;
   } else {
+    playSound(computerSelection.name);
     return `You lose this round! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`;
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  // a game consists of 5 rounds
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = {
-      name: "rock",
-      action: "crushes",
-      beats: "scissors",
-    };
-    const computerSelection = getComputerChoice();
-
-    const result = playRound(playerSelection, computerSelection);
-    console.log(result);
-
-    if (result.includes("win")) playerScore++;
-    if (result.includes("lose")) computerScore++;
-  }
-
-  const gameResult = getGameResult(playerScore, computerScore);
-  console.log(gameResult);
-}
-
 function playRound(playerSelection) {
-  // if (playerScore === 5 || computerScore === 5) {
-  //     wantsToPlayAgain();
-  // }
   // functionality to check who wins the round
   const computerSelection = getComputerChoice();
   console.log(playerSelection, computerSelection);
@@ -142,11 +100,15 @@ function playRound(playerSelection) {
 
   console.log(result);
   updateResults(result);
-  // // Reset the scores once one of the players wins 5 points
-  // if (playerScore === 5 || computerScore === 5) {
-  //   winner = playerScore === 5 ? "player" : "computer";
-  //   updateFinalResults(winner);
-  // }
+
+  // Reset the scores once one of the players wins 5 points
+  if (playerScore === 5 || computerScore === 5) {
+    const gameResult = getGameResult(playerScore, computerScore);
+    updateResults(gameResult);
+
+    // show the final results first and ask if they want to play again
+    wantsToPlayAgain();
+  }
 }
 
 function playSound(sound) {
