@@ -14,6 +14,7 @@ const playerScoreField = document.querySelector(".player-card__score");
 const computerScoreField = document.querySelector(".computer-card__score");
 
 const roundResultsField = document.querySelector(".summary-card__info");
+const summaryPage = document.querySelector(".game_summary_page");
 /************************************************************************************/
 
 function newGame() {
@@ -33,14 +34,21 @@ function resetResults() {
   roundResultsField.textContent = "Let's begin";
 }
 
-function wantsToPlayAgain() {
-    let answer = prompt("Do you want to play again?");
-    console.log(answer);
-    if(answer !== "no") {
-        newGame();
-    } else {
-        window.open("./gameOver.html", "_self");
-    }
+function showGameSummaryPage() {
+  const gameResult = getGameResult(playerScore, computerScore);
+  summaryPage.classList.remove('hidden');
+  summaryPage.style.display = 'flex';
+
+  const final_results = summaryPage.querySelector('.final_results');
+  final_results.textContent = gameResult;
+
+}
+
+function endGame() {
+  // remove event listeners on options
+  playerOptions.removeEventListener("click", playerSelectionHandler);
+  // give some gap and show the game summary screen on top
+  setTimeout(showGameSummaryPage, 1000);
 }
 
 function updateResults(result) {
@@ -101,9 +109,6 @@ function playRound(playerSelection) {
 
   // Reset the scores once one of the players wins 5 points
   if (playerScore === 5 || computerScore === 5) {
-    const gameResult = getGameResult(playerScore, computerScore);
-    updateResults(gameResult);
-
     // show the final results first and ask if they want to play again
     endGame();
   }
@@ -116,9 +121,7 @@ function playSound(sound) {
   audio.play();
 }
 
-// Play round by choosing one of rock, paper or scissor
-const playerOptions = document.querySelector(".player-card__options");
-playerOptions.addEventListener("click", (e) => {
+function playerSelectionHandler(e) {
   const optionDiv = e.target.closest("div");
   console.log(e.target);
   if (!optionDiv.classList.contains("card__option")) return;
@@ -126,4 +129,8 @@ playerOptions.addEventListener("click", (e) => {
   const option = optionDiv.getAttribute("data-option");
   const object = objects[option];
   playRound(object);
-});
+}
+
+// Play round by choosing one of rock, paper or scissor
+const playerOptions = document.querySelector(".player-card__options");
+playerOptions.addEventListener("click", playerSelectionHandler);
