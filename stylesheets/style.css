@@ -110,11 +110,11 @@
     padding: 5px;
 }
 
-.player-card__option {
+.clickable {
     cursor: pointer;
 }
 
-.player-card__option:active {
+.clickable:active {
     transform: scale(0.9);
 }
 

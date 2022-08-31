@@ -4,6 +4,8 @@ const objects = [
   { name: "paper", action: "covers", beats: "rock" },
   { name: "scissors", action: "cuts", beats: "paper" },
 ];
+const playerOptions = document.querySelector(".player-card__options");
+const playerOptionButtons = playerOptions.querySelectorAll('.player-card__option');
 
 let playerScore = 0;
 let computerScore = 0;
@@ -15,9 +17,16 @@ const computerScoreField = document.querySelector(".computer-card__score");
 
 const roundResultsField = document.querySelector(".summary-card__info");
 const summaryPage = document.querySelector(".game_summary_page");
+const playAgainButton = summaryPage.querySelector('button');
+playAgainButton.addEventListener('click', newGame);
 /************************************************************************************/
 
 function newGame() {
+  playerOptions.addEventListener("click", playerSelectionHandler);
+  playerOptionButtons.forEach(playerOptionButton => {
+    playerOptionButton.classList.add('clickable');
+  })
+  hideGameSummaryPage();
   resetSelections();
   resetResults();
 }
@@ -41,10 +50,18 @@ function showGameSummaryPage() {
 
   const final_results = summaryPage.querySelector('.final_results');
   final_results.textContent = gameResult;
+}
 
+function hideGameSummaryPage() {
+  summaryPage.classList.add('hidden');
+  summaryPage.style.display = 'none';
 }
 
 function endGame() {
+  // remove the click transform
+  playerOptionButtons.forEach(playerOptionButton => {
+    playerOptionButton.classList.remove('clickable');
+  })
   // remove event listeners on options
   playerOptions.removeEventListener("click", playerSelectionHandler);
   // give some gap and show the game summary screen on top
@@ -131,6 +148,5 @@ function playerSelectionHandler(e) {
   playRound(object);
 }
 
-// Play round by choosing one of rock, paper or scissor
-const playerOptions = document.querySelector(".player-card__options");
-playerOptions.addEventListener("click", playerSelectionHandler);
+// Initiate the game
+newGame();
