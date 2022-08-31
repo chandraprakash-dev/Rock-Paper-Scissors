@@ -4,77 +4,80 @@ const objects = [
   { name: "paper", action: "covers", beats: "rock" },
   { name: "scissors", action: "cuts", beats: "paper" },
 ];
+const playerOptions = document.querySelector(".player-card__options");
+const playerOptionButtons = playerOptions.querySelectorAll('.player-card__option');
 
 let playerScore = 0;
 let computerScore = 0;
-// let tieScore = 0;
-// let roundNo = 1;
-//
-// const roundNoField = document.querySelector('.summary-card__round');
+
 const playerSelectionImage = document.querySelector(".player-card__img__img");
-const computerSelectionImage = document.querySelector(
-  ".computer-card__img__img"
-);
+const computerSelectionImage = document.querySelector(".computer-card__img__img");
 const playerScoreField = document.querySelector(".player-card__score");
 const computerScoreField = document.querySelector(".computer-card__score");
-//
-// const finalResults = document.querySelector('.banner');
-const roundResultsField = document.querySelector(".summary-card__info");
-//
-// /************************************************************************************/
-//
-// function newGame() {
-//   resetSelections();
-//   resetResults();
-//   resetFinalResults();
-// }
 
-function updateSelections(playerSelection, computerSelection) {
-  // roundNoField.textContent = `${roundNo++}`;
-  playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
-  computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
+const roundResultsField = document.querySelector(".summary-card__info");
+const summaryPage = document.querySelector(".game_summary_page");
+const playAgainButton = summaryPage.querySelector('button');
+playAgainButton.addEventListener('click', newGame);
+/************************************************************************************/
+
+function newGame() {
+  playerOptions.addEventListener("click", playerSelectionHandler);
+  playerOptionButtons.forEach(playerOptionButton => {
+    playerOptionButton.classList.add('clickable');
+  })
+  hideGameSummaryPage();
+  resetSelections();
+  resetResults();
 }
 
-// function updateFinalResults(winner) {
-//   finalResults.textContent = `${winner} wins the game!`;
-// }
-//
-// function resetSelections() {
-//     roundNoField.textContent = `${roundNo++}`;
-//     playerSelectionImage.src = `./assets/images/rock.png`;
-//     computerSelectionImage.src = `./assets/images/rock.png`;
-// }
-//
-// function resetResults() {
-//     playerScore = computerScore = tieScore = 0;
-//   roundNo = 1;
-//
-//   roundNoField.textContent = roundNo;
-//
-// playerScoreField.textContent = playerScore;
-// computerScoreField.textContent = computerScore;
-// roundResultsField.textContent = "Let's begin";
-// }
-//
-// function resetFinalResults() {
-//     finalResults.textContent = 'Score 5 points to win';
-// }
-//
-// function wantsToPlayAgain() {
-//     let answer = prompt("Do you want to play again?");
-//
-//     if(answer !== "no") {
-//         newGame();
-//     } else {
-//         window.open("./gameOver.html", "_self");
-//     }
-// }
-//
+function resetSelections() {
+    playerSelectionImage.src = `./assets/images/rock.png`;
+    computerSelectionImage.src = `./assets/images/rock.png`;
+}
+
+function resetResults() {
+  playerScore = computerScore = 0;
+  playerScoreField.textContent = playerScore;
+  computerScoreField.textContent = computerScore;
+  roundResultsField.textContent = "Let's begin";
+}
+
+function showGameSummaryPage() {
+  const gameResult = getGameResult(playerScore, computerScore);
+  summaryPage.classList.remove('hidden');
+  summaryPage.style.display = 'flex';
+
+  const final_results = summaryPage.querySelector('.final_results');
+  final_results.textContent = gameResult;
+}
+
+function hideGameSummaryPage() {
+  summaryPage.classList.add('hidden');
+  summaryPage.style.display = 'none';
+}
+
+function endGame() {
+  // remove the click transform
+  playerOptionButtons.forEach(playerOptionButton => {
+    playerOptionButton.classList.remove('clickable');
+  })
+  // remove event listeners on options
+  playerOptions.removeEventListener("click", playerSelectionHandler);
+  // give some gap and show the game summary screen on top
+  setTimeout(showGameSummaryPage, 1000);
+}
+
 function updateResults(result) {
   console.log(result);
   roundResultsField.textContent = result;
   playerScoreField.textContent = playerScore;
   computerScoreField.textContent = computerScore;
+}
+
+function updateSelections(playerSelection, computerSelection) {
+  playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
+  computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
 }
 
 function getComputerChoice() {
@@ -94,42 +97,20 @@ function getGameResult(playerScore, computerScore) {
 }
 
 function getRoundResult(playerSelection, computerSelection) {
-  if (playerSelection.name === computerSelection.name) return "It is a tie";
+  if (playerSelection.name === computerSelection.name) {
+    playSound("tie");
+    return "It is a tie";
+  }
   if (playerSelection.beats === computerSelection.name) {
+    playSound(playerSelection.name);
     return `You win this round! ${playerSelection.name} ${playerSelection.action} ${computerSelection.name}`;
   } else {
+    playSound(computerSelection.name);
     return `You lose this round! ${computerSelection.name} ${computerSelection.action} ${playerSelection.name}`;
   }
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  // a game consists of 5 rounds
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = {
-      name: "rock",
-      action: "crushes",
-      beats: "scissors",
-    };
-    const computerSelection = getComputerChoice();
-
-    const result = playRound(playerSelection, computerSelection);
-    console.log(result);
-
-    if (result.includes("win")) playerScore++;
-    if (result.includes("lose")) computerScore++;
-  }
-
-  const gameResult = getGameResult(playerScore, computerScore);
-  console.log(gameResult);
-}
-
 function playRound(playerSelection) {
-  // if (playerScore === 5 || computerScore === 5) {
-  //     wantsToPlayAgain();
-  // }
   // functionality to check who wins the round
   const computerSelection = getComputerChoice();
   console.log(playerSelection, computerSelection);
@@ -142,11 +123,12 @@ function playRound(playerSelection) {
 
   console.log(result);
   updateResults(result);
-  // // Reset the scores once one of the players wins 5 points
-  // if (playerScore === 5 || computerScore === 5) {
-  //   winner = playerScore === 5 ? "player" : "computer";
-  //   updateFinalResults(winner);
-  // }
+
+  // Reset the scores once one of the players wins 5 points
+  if (playerScore === 5 || computerScore === 5) {
+    // show the final results first and ask if they want to play again
+    endGame();
+  }
 }
 
 function playSound(sound) {
@@ -156,9 +138,7 @@ function playSound(sound) {
   audio.play();
 }
 
-// Play round by choosing one of rock, paper or scissor
-const playerOptions = document.querySelector(".player-card__options");
-playerOptions.addEventListener("click", (e) => {
+function playerSelectionHandler(e) {
   const optionDiv = e.target.closest("div");
   console.log(e.target);
   if (!optionDiv.classList.contains("card__option")) return;
@@ -166,4 +146,7 @@ playerOptions.addEventListener("click", (e) => {
   const option = optionDiv.getAttribute("data-option");
   const object = objects[option];
   playRound(object);
-});
+}
+
+// Initiate the game
+newGame();

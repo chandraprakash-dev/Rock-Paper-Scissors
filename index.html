@@ -33,19 +33,18 @@
                         <img class="card__img__img player-card__img__img" src="assets/images/rock.png" alt="rock"/>
                     </div>
                     <div class="card__options player-card__options">
-                        <div class="card__option player-card__option" data-option="0">
+                        <div class="card__option player-card__option clickable" data-option="0">
                             <i class="fas fa-hand-rock fa-2x"></i>
                         </div>
-                        <div class="card__option player-card__option" data-option="1">
+                        <div class="card__option player-card__option clickable" data-option="1">
                             <i class="fas fa-hand-paper fa-2x"></i>
                         </div>
-                        <div class="card__option player-card__option" data-option="2">
+                        <div class="card__option player-card__option clickable" data-option="2">
                             <i class="fas fa-hand-scissors fa-2x"></i>
                         </div>
                     </div>
                 </div>
                 <div class="card summary-card">
-                    <h2 class="summary-card__heading">Round <span class="summary-card__round">1</span></h2>
                     <p class="summary-card__info">Let's begin</p>
                 </div>
                 <div class="card computer-card">
@@ -76,6 +75,12 @@
         <p class="footer__creator">Made by Chandra</p>
         <p class="footer__hosting">Hosted with <i class="fas fa-heart"></i> by github</p>
     </footer>
+    <div class="game_summary_page hidden">
+        <div class="container">
+            <p class="final_results"></p>
+            <button>Play again</button>
+        </div>
+    </div>
     <script src="scripts/main.js"></script>
 </body>
 </html>
