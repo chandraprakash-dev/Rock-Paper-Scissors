@@ -9,36 +9,29 @@ let playerScore = 0;
 let computerScore = 0;
 
 const playerSelectionImage = document.querySelector(".player-card__img__img");
-const computerSelectionImage = document.querySelector(
-  ".computer-card__img__img"
-);
+const computerSelectionImage = document.querySelector(".computer-card__img__img");
 const playerScoreField = document.querySelector(".player-card__score");
 const computerScoreField = document.querySelector(".computer-card__score");
 
 const roundResultsField = document.querySelector(".summary-card__info");
 /************************************************************************************/
 
-// function newGame() {
-//   resetSelections();
-//   resetResults();
-// }
-
-function updateSelections(playerSelection, computerSelection) {
-  playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
-  computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
+function newGame() {
+  resetSelections();
+  resetResults();
 }
 
-// function resetSelections() {
-//     playerSelectionImage.src = `./assets/images/rock.png`;
-//     computerSelectionImage.src = `./assets/images/rock.png`;
-// }
-//
-// function resetResults() {
-//   playerScore = computerScore = 0;
-//   playerScoreField.textContent = playerScore;
-//   computerScoreField.textContent = computerScore;
-//   roundResultsField.textContent = "Let's begin";
-// }
+function resetSelections() {
+    playerSelectionImage.src = `./assets/images/rock.png`;
+    computerSelectionImage.src = `./assets/images/rock.png`;
+}
+
+function resetResults() {
+  playerScore = computerScore = 0;
+  playerScoreField.textContent = playerScore;
+  computerScoreField.textContent = computerScore;
+  roundResultsField.textContent = "Let's begin";
+}
 
 function wantsToPlayAgain() {
     let answer = prompt("Do you want to play again?");
@@ -55,6 +48,11 @@ function updateResults(result) {
   roundResultsField.textContent = result;
   playerScoreField.textContent = playerScore;
   computerScoreField.textContent = computerScore;
+}
+
+function updateSelections(playerSelection, computerSelection) {
+  playerSelectionImage.src = `./assets/images/${playerSelection.name}.png`;
+  computerSelectionImage.src = `./assets/images/${computerSelection.name}.png`;
 }
 
 function getComputerChoice() {
@@ -107,7 +105,7 @@ function playRound(playerSelection) {
     updateResults(gameResult);
 
     // show the final results first and ask if they want to play again
-    wantsToPlayAgain();
+    endGame();
   }
 }
 
