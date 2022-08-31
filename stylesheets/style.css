@@ -132,11 +132,15 @@
 }
 
 .container {
+    margin: 20px;
     height: 200px;
     width: 300px;
     background: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     border: 2px solid cornflowerblue;
+}
+
+.container button {
+    cursor: pointer;
+    padding: 5px;
 }
